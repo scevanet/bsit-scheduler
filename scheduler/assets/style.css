@@ -49,7 +49,7 @@ main div {
   padding: 2em;
 }
 
-/* ----------------- TODO: Finish this shit ------------*/
+/* ----------------- TODO: Colorize ------------*/
 .calendar {
   grid-area: calendar;
   padding: 2em;
@@ -64,21 +64,15 @@ main div {
 
 .hour {
   display: grid;
-	grid-template-columns: repeat(4, 1fr);
-  grid-auto-flow: dense;
+	grid-template-rows: repeat(2, 1fr);
 }
 
-.day {
-  display:contents;
-  background-color: #DDD; /* if display contents, this won't color */
-}
-.day-label {
-  grid-row-start: 1;
-  text-align: right;
-  margin:0;
-}
+.mhour {grid-column-end: 2;}
+.tuhour {grid-column-end: 3;}
+.whour {grid-column-end: 4;}
+.thhour {grid-column-end: 5;}
 
-.week-day, .day-label, .event {
+.week-day, .event {
   padding: 4px 10px;
 }
 
@@ -96,10 +90,11 @@ main div {
   border-bottom-left-radius: 10px;
 }
 
-.day:nth-child(1) > .event { grid-row-start: 1; }
-.day:nth-child(2) > .event { grid-row-start: 2; }
-.day:nth-child(3) > .event { grid-row-start: 3; }
-.day:nth-child(4) > .event { grid-row-start: 4; }
+/* ----------------- TODO: Finish this shit ------------*/
+.hour:nth-child(1) > .event { grid-column-start: 1; }
+.hour:nth-child(2) > .event { grid-column-start: 2; }
+.hour:nth-child(3) > .event { grid-column-start: 3; }
+.hour:nth-child(4) > .event { grid-column-start: 4; }
 
 [data-span="1"] { grid-row-end: span 1; }
 [data-span="2"] { grid-row-end: span 2; }
