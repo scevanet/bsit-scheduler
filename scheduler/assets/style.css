@@ -10,6 +10,8 @@
   --main-cell-bg-color: #dde5ed;
   --main-border: 1px solid #003459;
   --main-h2-color: #2A647B;
+  --week-day-bg-color: #003459;
+  --week-day-font-color: #fff;
   --event-bg-color: #85898a;
   --footer-bg-color: #003459;
   --footer-font-color: #dde5ed;
@@ -26,8 +28,8 @@ main {
   width: 100%;
   font-family: var(--gotham);
   display: grid;
-  grid-auto-columns: auto;
-  grid-auto-rows: auto;
+  grid-auto-columns: minmax(2fr, auto);
+  grid-auto-rows: minmax(1fr, auto);
   grid-gap: var(--grid-gap);
   grid-template-areas:
     "header"
@@ -41,20 +43,21 @@ header {
   grid-area: header;
   border-bottom: var(--main-border);
   text-align: center;
-  padding: 2em;
+  padding: 0;
   background-color: var(--header-bg-color);
   color: var(--header-font-color);
 }
 
 main div {
   border: var(--main-border);
+  max-width: 100%;
 }
 
 /*---------------------TODO Create Courses content-------------------------*/
 .courses {
   background-color: var(--main-cell-bg-color);
   grid-area: courses;
-  padding: 2em;
+  padding: .5em;
 }
 
 /* ----------------- Calendar ------------*/
@@ -65,20 +68,108 @@ main div {
 
 .week {
   display: grid;
-	grid-template-columns: repeat(5, 1fr);
-  grid-auto-flow: dense;
-  width: 90%;
-  margin: 1em;
+  grid-template-rows: repeat(9, 0) repeat(36, 1fr);
+  max-width: 100%;
+  margin: 0;
+  grid-template-areas:
+  "daytime"
+  "dthour1"
+  "dthour2"
+  "dthour3"
+  "dthour4"
+  "dthour5"
+  "dthour6"
+  "dthour7"
+  "dthour8"
+  "monday"
+  "mhour1"
+  "mhour2"
+  "mhour3"
+  "mhour4"
+  "mhour5"
+  "mhour6"
+  "mhour7"
+  "mhour8"
+  "tuesday"
+  "tuhour1"
+  "tuhour2"
+  "tuhour3"
+  "tuhour4"
+  "tuhour5"
+  "tuhour6"
+  "tuhour7"
+  "tuhour8"
+  "wednesday"
+  "whour1"
+  "whour2"
+  "whour3"
+  "whour4"
+  "whour5"
+  "whour6"
+  "whour7"
+  "whour8"
+  "thursday"
+  "thhour1"
+  "thhour2"
+  "thhour3"
+  "thhour4"
+  "thhour5"
+  "thhour6"
+  "thhour7"
+  "thhour8"
+  ;
 }
 
-.dthour {grid-column-end: 2;}
-.mhour {grid-column-end: 3;}
-.tuhour {grid-column-end: 4;}
-.whour {grid-column-end: 5;}
-.thhour {grid-column-end: 6;}
+.dthour1 {visibility: hidden;grid-area: dthour1;}
+.dthour2 {visibility: hidden;grid-area: dthour2;}
+.dthour3 {visibility: hidden;grid-area: dthour3;}
+.dthour4 {visibility: hidden;grid-area: dthour4;}
+.dthour5 {visibility: hidden;grid-area: dthour5;}
+.dthour6 {visibility: hidden;grid-area: dthour6;}
+.dthour7 {visibility: hidden;grid-area: dthour7;}
+.dthour8 {visibility: hidden;grid-area: dthour8;}
+.mhour1 {grid-area: mhour1;}
+.mhour2 {grid-area: mhour2;}
+.mhour3 {grid-area: mhour3;}
+.mhour4 {grid-area: mhour4;}
+.mhour5 {grid-area: mhour5;}
+.mhour6 {grid-area: mhour6;}
+.mhour7 {grid-area: mhour7;}
+.mhour8 {grid-area: mhour8;}
+.tuhour1 {grid-area: tuhour1;}
+.tuhour2 {grid-area: tuhour2;}
+.tuhour3 {grid-area: tuhour3;}
+.tuhour4 {grid-area: tuhour4;}
+.tuhour5 {grid-area: tuhour5;}
+.tuhour6 {grid-area: tuhour6;}
+.tuhour7 {grid-area: tuhour7;}
+.tuhour8 {grid-area: tuhour8;}
+.whour1 {grid-area: whour1;}
+.whour2 {grid-area: whour2;}
+.whour3 {grid-area: whour3;}
+.whour4 {grid-area: whour4;}
+.whour5 {grid-area: whour5;}
+.whour6 {grid-area: whour6;}
+.whour7 {grid-area: whour7;}
+.whour8 {grid-area: whour8;}
+.thhour1 {grid-area: thhour1;}
+.thhour2 {grid-area: thhour2;}
+.thhour3 {grid-area: thhour3;}
+.thhour4 {grid-area: thhour4;}
+.thhour5 {grid-area: thhour5;}
+.thhour6 {grid-area: thhour6;}
+.thhour7 {grid-area: thhour7;}
+.thhour8 {grid-area: thhour8;}
 
-.week-day, .event {
-  padding: 4px 10px;
+.week-day, .event, .hour {
+  padding: .125em .5em;
+}
+
+.week-day {
+  text-align: center;
+  font-weight: bolder;
+  background-color: var(--week-day-bg-color);
+  color: var(--week-day-font-color);
 }
 
 .event {
@@ -95,30 +186,22 @@ main div {
   border-top-right-radius: 10px;
 }
 
-.event .tuesday {
-  grid-column-start: 2;
-  grid-column-end: 6;
-}
 /* ----------------- TODO: Finish this shit ------------*/
 .daytime {
-  grid-column-start: 1;
-  grid-column-end: 2;
+  visibility: hidden;
+  grid-area: daytime;
 }
 .monday {
-  grid-column-start: 2;
-  grid-column-end: 3;
+  grid-area: monday;
 }
 .tuesday {
-  grid-column-start: 3;
-  grid-column-end: 4;
+  grid-area: tuesday;
 }
 .wednesday {
-  grid-column-start: 4;
-  grid-column-end: 5;
+  grid-area: wednesday;
 }
 .thursday {
-  grid-column-start: 5;
-  grid-column-end: 6;
+  grid-area: thursday;
 }
 
 /*---------------------TODO Create summary content-------------------------*/
@@ -133,7 +216,7 @@ footer {
   grid-area: footer;
   text-align: center;
   border-top: var(--main-border);
-  padding: 2em;
+  padding: 1em;
   background-color: var(--footer-bg-color);
   color: var(--footer-font-color);
 }
@@ -150,5 +233,27 @@ footer {
       "calendar courses"
       "summary courses"
       "footer footer";
+  }
+
+  .daytime, .dthour1, .dthour2, .dthour3, .dthour4, .dthour5, .dthour6,
+  .dthour7, .dthour8{visibility: visible;}
+  .week {
+    display: grid;
+    grid-auto-flow: dense;
+    grid-auto-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    max-width: 90%;
+    margin: .25em auto;
+    grid-template-areas:
+    "daytime monday tuesday wednesday thursday"
+    "dthour1 mhour1 tuhour1 whour1 thhour1"
+    "dthour2 mhour2 tuhour2 whour2 thhour2"
+    "dthour3 mhour3 tuhour3 whour3 thhour3"
+    "dthour4 mhour4 tuhour4 whour4 thhour4"
+    "dthour5 mhour5 tuhour5 whour5 thhour5"
+    "dthour6 mhour6 tuhour6 whour6 thhour6"
+    "dthour7 mhour7 tuhour7 whour7 thhour7"
+    "dthour8 mhour8 tuhour8 whour8 thhour8"
+    ;
   }
 }
