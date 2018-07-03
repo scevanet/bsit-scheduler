@@ -271,7 +271,7 @@ main div {
 }
 
 .review button {
-  padding: 1em 2em;
+  padding: 1em 5em;
   font-size: 2em;
   border: var(--review-btn-border);
   color: var(--review-btn-font-color);
