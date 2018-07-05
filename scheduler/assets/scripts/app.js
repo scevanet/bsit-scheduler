@@ -8,7 +8,11 @@ var app = {
   creditHours: 0,
   tuition: 0,
   courses: '',
-  online: ''
+  online: '',
+  mondayCourses: [],
+  tuesdayCourses: [],
+  wednesdayCourses: [],
+  thursdayCourses: []
 };
 
 var it310Selected = false;
@@ -31,6 +35,7 @@ var addIT310 = function addIT310() {
   it310Selected = true;
   app.creditHours = app.creditHours + 3;
   app.tuition = app.tuition + 800;
+  app.mondayCourses.push('IT310');
   disable420();
   renderApp();
 };
@@ -39,6 +44,10 @@ var removeIT310 = function removeIT310() {
   it310Selected = false;
   app.creditHours = app.creditHours - 3;
   app.tuition = app.tuition - 800;
+  var result = app.mondayCourses.filter(function (course) {
+    return course != 'IT310';
+  });
+  app.mondayCourses = result;
   renderApp();
 };
 
@@ -54,6 +63,7 @@ var addIT320 = function addIT320() {
   it320Selected = true;
   app.creditHours = app.creditHours + 3;
   app.tuition = app.tuition + 800;
+  app.thursdayCourses.push('IT320');
   disable420();
   renderApp();
 };
@@ -62,6 +72,10 @@ var removeIT320 = function removeIT320() {
   it320Selected = false;
   app.creditHours = app.creditHours - 3;
   app.tuition = app.tuition - 800;
+  var result = app.thursdayCourses.filter(function (course) {
+    return course != 'IT320';
+  });
+  app.thursdayCourses = result;
   renderApp();
 };
 
@@ -77,6 +91,7 @@ var addIT340 = function addIT340() {
   it340Selected = true;
   app.creditHours = app.creditHours + 3;
   app.tuition = app.tuition + 800;
+  app.wednesdayCourses.push('IT340');
   disable420();
   renderApp();
 };
@@ -85,6 +100,10 @@ var removeIT340 = function removeIT340() {
   it340Selected = false;
   app.creditHours = app.creditHours - 3;
   app.tuition = app.tuition - 800;
+  var result = app.wednesdayCourses.filter(function (course) {
+    return course != 'IT340';
+  });
+  app.wednesdayCourses = result;
   renderApp();
 };
 
@@ -150,6 +169,7 @@ var addMath365 = function addMath365() {
   math365Selected = true;
   app.creditHours = app.creditHours + 3;
   app.tuition = app.tuition + 800;
+  app.tuesdayCourses.push('MATH365');
   renderApp();
 };
 
@@ -157,6 +177,10 @@ var removeMath365 = function removeMath365() {
   math365Selected = false;
   app.creditHours = app.creditHours - 3;
   app.tuition = app.tuition - 800;
+  var result = app.tuesdayCourses.filter(function (course) {
+    return course != 'MATH365';
+  });
+  app.tuesdayCourses = result;
   renderApp();
 };
 
@@ -197,101 +221,212 @@ var renderApp = function renderApp() {
           { className: 'week' },
           React.createElement(
             'div',
-            { className: 'week-day daytime' },
-            'Day/Time'
+            { className: 'week-day monday' },
+            'Monday'
           ),
+          app.mondayCourses.map(function (courses) {
+            return React.createElement(
+              'div',
+              { className: 'sixMoOClockClass', key: courses },
+              courses
+            );
+          }),
           React.createElement(
             'div',
-            { className: 'hour dthour1' },
+            { className: 'hour mhour1' },
             '1600'
           ),
           React.createElement(
             'div',
-            { className: 'hour dthour2' },
+            { className: 'hour mhour2' },
             '1700'
           ),
           React.createElement(
             'div',
-            { className: 'hour dthour3' },
+            { className: 'hour mhour3' },
             '1800'
           ),
           React.createElement(
             'div',
-            { className: 'hour dthour4' },
+            { className: 'hour mhour4' },
             '1900'
           ),
           React.createElement(
             'div',
-            { className: 'hour dthour5' },
+            { className: 'hour mhour5' },
             '2000'
           ),
           React.createElement(
             'div',
-            { className: 'hour dthour6' },
+            { className: 'hour mhour6' },
             '2100'
           ),
           React.createElement(
             'div',
-            { className: 'hour dthour7' },
+            { className: 'hour mhour7' },
             '2200'
           ),
           React.createElement(
             'div',
-            { className: 'hour dthour8' },
+            { className: 'hour mhour8' },
             '2300'
           ),
-          React.createElement(
-            'div',
-            { className: 'week-day monday' },
-            'Monday'
-          ),
-          React.createElement('div', { className: 'hour mhour1' }),
-          React.createElement('div', { className: 'hour mhour2' }),
-          React.createElement('div', { className: 'hour mhour3' }),
-          React.createElement('div', { className: 'hour mhour4' }),
-          React.createElement('div', { className: 'hour mhour5' }),
-          React.createElement('div', { className: 'hour mhour6' }),
-          React.createElement('div', { className: 'hour mhour7' }),
-          React.createElement('div', { className: 'hour mhour8' }),
           React.createElement(
             'div',
             { className: 'week-day tuesday' },
             'Tuesday'
           ),
-          React.createElement('div', { className: 'hour tuhour1' }),
-          React.createElement('div', { className: 'hour tuhour2' }),
-          React.createElement('div', { className: 'hour tuhour3' }),
-          React.createElement('div', { className: 'hour tuhour4' }),
-          React.createElement('div', { className: 'hour tuhour5' }),
-          React.createElement('div', { className: 'hour tuhour6' }),
-          React.createElement('div', { className: 'hour tuhour7' }),
-          React.createElement('div', { className: 'hour tuhour8' }),
+          app.tuesdayCourses.map(function (courses) {
+            return React.createElement(
+              'div',
+              { className: 'sevTuOClockClass', key: courses },
+              courses
+            );
+          }),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour1' },
+            '1600'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour2' },
+            '1700'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour3' },
+            '1800'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour4' },
+            '1900'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour5' },
+            '2000'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour6' },
+            '2100'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour7' },
+            '2200'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour8' },
+            '2300'
+          ),
           React.createElement(
             'div',
             { className: 'week-day wednesday' },
             'Wednesday'
           ),
-          React.createElement('div', { className: 'hour whour1' }),
-          React.createElement('div', { className: 'hour whour2' }),
-          React.createElement('div', { className: 'hour whour3' }),
-          React.createElement('div', { className: 'hour whour4' }),
-          React.createElement('div', { className: 'hour whour5' }),
-          React.createElement('div', { className: 'hour whour6' }),
-          React.createElement('div', { className: 'hour whour7' }),
-          React.createElement('div', { className: 'hour whour8' }),
+          app.wednesdayCourses.map(function (courses) {
+            return React.createElement(
+              'div',
+              { className: 'sixWOClockClass', key: courses },
+              courses
+            );
+          }),
+          React.createElement(
+            'div',
+            { className: 'hour whour1' },
+            '1600'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour2' },
+            '1700'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour3' },
+            '1800'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour4' },
+            '1900'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour5' },
+            '2000'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour6' },
+            '2100'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour7' },
+            '2200'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour8' },
+            '2300'
+          ),
           React.createElement(
             'div',
             { className: 'week-day thursday' },
             'Thursday'
           ),
-          React.createElement('div', { className: 'hour thhour1' }),
-          React.createElement('div', { className: 'hour thhour2' }),
-          React.createElement('div', { className: 'hour thhour3' }),
-          React.createElement('div', { className: 'hour thhour4' }),
-          React.createElement('div', { className: 'hour thhour5' }),
-          React.createElement('div', { className: 'hour thhour6' }),
-          React.createElement('div', { className: 'hour thhour7' }),
-          React.createElement('div', { className: 'hour thhour8' })
+          app.thursdayCourses.map(function (courses) {
+            return React.createElement(
+              'div',
+              { className: 'sevThOClockClass', key: courses },
+              courses
+            );
+          }),
+          React.createElement(
+            'div',
+            { className: 'hour thhour1' },
+            '1600'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour2' },
+            '1700'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour3' },
+            '1800'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour4' },
+            '1900'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour5' },
+            '2000'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour6' },
+            '2100'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour7' },
+            '2200'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour8' },
+            '2300'
+          )
         )
       ),
       React.createElement(
@@ -497,7 +632,6 @@ var renderApp = function renderApp() {
               { href: '#' },
               'Course Description'
             ),
-            '>',
             React.createElement(
               'ul',
               null,

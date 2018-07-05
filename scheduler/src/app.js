@@ -6,7 +6,11 @@ const app = {
   creditHours: 0,
   tuition: 0,
   courses: '',
-  online: ''
+  online: '',
+  mondayCourses: [],
+  tuesdayCourses: [],
+  wednesdayCourses: [],
+  thursdayCourses: []
 };
 
 let it310Selected = false;
@@ -30,6 +34,7 @@ const addIT310 = () => {
   it310Selected = true;
   app.creditHours = app.creditHours + 3;
   app.tuition = app.tuition + 800;
+  app.mondayCourses.push('IT310');
   disable420();
   renderApp();
 }
@@ -38,6 +43,8 @@ const removeIT310 = () => {
   it310Selected = false;
   app.creditHours = app.creditHours - 3;
   app.tuition = app.tuition - 800;
+  const result = app.mondayCourses.filter(course => course != 'IT310');
+  app.mondayCourses = result;
   renderApp();
 }
 
@@ -54,6 +61,7 @@ const addIT320 = () => {
   it320Selected = true;
   app.creditHours = app.creditHours + 3;
   app.tuition = app.tuition + 800;
+  app.thursdayCourses.push('IT320');
   disable420();
   renderApp();
 }
@@ -62,6 +70,8 @@ const removeIT320 = () => {
   it320Selected = false;
   app.creditHours = app.creditHours - 3;
   app.tuition = app.tuition - 800;
+  const result = app.thursdayCourses.filter(course => course != 'IT320');
+  app.thursdayCourses = result;
   renderApp();
 }
 
@@ -78,6 +88,7 @@ const addIT340 = () => {
   it340Selected = true;
   app.creditHours = app.creditHours + 3;
   app.tuition = app.tuition + 800;
+  app.wednesdayCourses.push('IT340');
   disable420();
   renderApp();
 }
@@ -86,6 +97,8 @@ const removeIT340 = () => {
   it340Selected = false;
   app.creditHours = app.creditHours - 3;
   app.tuition = app.tuition - 800;
+  const result = app.wednesdayCourses.filter(course => course != 'IT340');
+  app.wednesdayCourses = result;
   renderApp();
 }
 
@@ -154,6 +167,7 @@ const addMath365 = () => {
   math365Selected = true;
   app.creditHours = app.creditHours + 3;
   app.tuition = app.tuition + 800;
+  app.tuesdayCourses.push('MATH365');
   renderApp();
 }
 
@@ -161,6 +175,8 @@ const removeMath365 = () => {
   math365Selected = false;
   app.creditHours = app.creditHours - 3;
   app.tuition = app.tuition - 800;
+  const result = app.tuesdayCourses.filter(course => course != 'MATH365');
+  app.tuesdayCourses = result;
   renderApp();
 }
 
@@ -186,51 +202,46 @@ const renderApp = () => {
     <main>
       <div className="calendar">
         <div className="week">
-          <div className="week-day daytime">Day/Time</div>
-            <div className="hour dthour1">1600</div>
-            <div className="hour dthour2">1700</div>
-            <div className="hour dthour3">1800</div>
-            <div className="hour dthour4">1900</div>
-            <div className="hour dthour5">2000</div>
-            <div className="hour dthour6">2100</div>
-            <div className="hour dthour7">2200</div>
-            <div className="hour dthour8">2300</div>
           <div className="week-day monday">Monday</div>
-            <div className="hour mhour1"></div>
-            <div className="hour mhour2"></div>
-            <div className="hour mhour3"></div>
-            <div className="hour mhour4"></div>
-            <div className="hour mhour5"></div>
-            <div className="hour mhour6"></div>
-            <div className="hour mhour7"></div>
-            <div className="hour mhour8"></div>
+            {app.mondayCourses.map((courses) => <div className="sixMoOClockClass" key={courses}>{courses}</div>)}
+            <div className="hour mhour1">1600</div>
+            <div className="hour mhour2">1700</div>
+            <div className="hour mhour3">1800</div>
+            <div className="hour mhour4">1900</div>
+            <div className="hour mhour5">2000</div>
+            <div className="hour mhour6">2100</div>
+            <div className="hour mhour7">2200</div>
+            <div className="hour mhour8">2300</div>
           <div className="week-day tuesday">Tuesday</div>
-            <div className="hour tuhour1"></div>
-            <div className="hour tuhour2"></div>
-            <div className="hour tuhour3"></div>
-            <div className="hour tuhour4"></div>
-            <div className="hour tuhour5"></div>
-            <div className="hour tuhour6"></div>
-            <div className="hour tuhour7"></div>
-            <div className="hour tuhour8"></div>
+            {app.tuesdayCourses.map((courses) => <div className="sevTuOClockClass" key={courses}>{courses}</div>)}
+            <div className="hour tuhour1">1600</div>
+            <div className="hour tuhour2">1700</div>
+            <div className="hour tuhour3">1800</div>
+            <div className="hour tuhour4">1900</div>
+            <div className="hour tuhour5">2000</div>
+            <div className="hour tuhour6">2100</div>
+            <div className="hour tuhour7">2200</div>
+            <div className="hour tuhour8">2300</div>
           <div className="week-day wednesday">Wednesday</div>
-            <div className="hour whour1"></div>
-            <div className="hour whour2"></div>
-            <div className="hour whour3"></div>
-            <div className="hour whour4"></div>
-            <div className="hour whour5"></div>
-            <div className="hour whour6"></div>
-            <div className="hour whour7"></div>
-            <div className="hour whour8"></div>
+            {app.wednesdayCourses.map((courses) => <div className="sixWOClockClass" key={courses}>{courses}</div>)}
+            <div className="hour whour1">1600</div>
+            <div className="hour whour2">1700</div>
+            <div className="hour whour3">1800</div>
+            <div className="hour whour4">1900</div>
+            <div className="hour whour5">2000</div>
+            <div className="hour whour6">2100</div>
+            <div className="hour whour7">2200</div>
+            <div className="hour whour8">2300</div>
           <div className="week-day thursday">Thursday</div>
-            <div className="hour thhour1"></div>
-            <div className="hour thhour2"></div>
-            <div className="hour thhour3"></div>
-            <div className="hour thhour4"></div>
-            <div className="hour thhour5"></div>
-            <div className="hour thhour6"></div>
-            <div className="hour thhour7"></div>
-            <div className="hour thhour8"></div>
+            {app.thursdayCourses.map((courses) => <div className="sevThOClockClass" key={courses}>{courses}</div>)}
+            <div className="hour thhour1">1600</div>
+            <div className="hour thhour2">1700</div>
+            <div className="hour thhour3">1800</div>
+            <div className="hour thhour4">1900</div>
+            <div className="hour thhour5">2000</div>
+            <div className="hour thhour6">2100</div>
+            <div className="hour thhour7">2200</div>
+            <div className="hour thhour8">2300</div>
         </div>
       </div>
       <div className="summary">
@@ -284,7 +295,7 @@ const renderApp = () => {
           <div className="card">
             <h4>ENGL 362 -- Foundations of Technical Writing</h4>
             <p>8/20/2018 - 12/14/2018</p>
-            <a href="#">Course Description</a>>
+            <a href="#">Course Description</a>
             <ul>
               <li>Something about the course</li>
               <li>Something else about the course</li>
