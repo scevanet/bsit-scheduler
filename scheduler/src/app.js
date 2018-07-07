@@ -479,7 +479,7 @@ const renderSubmitApp = () => {
             <div className="hour mhour6">2100</div>
             <div className="hour mhour7">2200</div>
             <div className="hour mhour8">2300</div>
-          <div className="week-day tuesday">Tuesday</div>
+          <div className="weekS-day tuesday">Tuesday</div>
             {app.tuesdayCourses.map((courses) => <div className="sevTuOClockClass" key={courses}>{courses}</div>)}
             <div className="hour tuhour1">1600</div>
             <div className="hour tuhour2">1700</div>

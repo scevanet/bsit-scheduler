@@ -1226,7 +1226,7 @@ var renderSubmitApp = function renderSubmitApp() {
           ),
           React.createElement(
             'div',
-            { className: 'week-day tuesday' },
+            { className: 'weekS-day tuesday' },
             'Tuesday'
           ),
           app.tuesdayCourses.map(function (courses) {
