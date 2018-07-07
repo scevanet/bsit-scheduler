@@ -32,7 +32,7 @@ body {
   background-color: var(--body-bg-color);
 }
 
-main {
+.main {
   width: 100%;
   font-family: var(--gotham);
   display: grid;
@@ -206,6 +206,10 @@ main div {
   padding: 0;
 }
 
+.coursesumm ul {
+  margin-left: 2em;
+}
+
 .tutitionsumm {
   grid-area: tutitionsumm;
   border: none;
@@ -224,12 +228,17 @@ main div {
   padding: 3em;
 }
 
-.review button {
-  padding: 1em 5em;
+.review a, .review button{
+  padding: 1em 3em;
   font-size: 2em;
   border: var(--review-btn-border);
   color: var(--review-btn-font-color);
   background-color: var(--review-btn-bg-color);
+  margin-right: 2em;
+}
+.review a {
+  font-weight: bolder;
+  text-decoration: none;
 }
 /*---------------------TODO Create footer content-------------------------*/
 footer {
@@ -242,7 +251,7 @@ footer {
 }
 
 @media all and (min-width: 800px) {
-  main {
+  .main {
     width: 100%;
     display: grid;
     grid-auto-columns: minmax(2fr, auto);
@@ -254,6 +263,21 @@ footer {
       "summary courses"
       "review review"
       "footer footer";
+  }
+
+  .reviewMain{
+    width: 100%;
+    display: grid;
+    grid-auto-columns: minmax(2fr, auto);
+    grid-auto-rows: minmax(1fr, auto);
+    grid-gap: 0;
+    grid-template-areas:
+      "header header"
+      "calendar calendar"
+      "summary summary"
+      "review review"
+      "footer footer";
+  }
   }
 
   .column {

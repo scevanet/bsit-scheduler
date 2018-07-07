@@ -7,7 +7,7 @@ var appRoot = document.getElementById('app');
 var app = {
   creditHours: 0,
   tuition: 0,
-  courses: '',
+  courses: [],
   online: '',
   mondayCourses: [],
   tuesdayCourses: [],
@@ -21,9 +21,20 @@ var it340Selected = false;
 var it420Selected = false;
 var engl362Selected = false;
 var math365Selected = false;
-var disabled420 = false;
+var visability = true;
+
+var toggle420Visibility = function toggle420Visibility() {
+  if (app.courses.length == 0) {
+    // array does not exist, is not an array, or is empty
+    visability = !visability;
+    renderApp();
+  } else {
+    renderApp();
+  }
+};
 
 var it310sel = function it310sel() {
+  toggle420Visibility();
   if (!it310Selected) {
     addIT310();
   } else {
@@ -36,7 +47,7 @@ var addIT310 = function addIT310() {
   app.creditHours = app.creditHours + 3;
   app.tuition = app.tuition + 800;
   app.mondayCourses.push('IT310');
-  disable420();
+  app.courses.push('IT310');
   renderApp();
 };
 
@@ -48,10 +59,15 @@ var removeIT310 = function removeIT310() {
     return course != 'IT310';
   });
   app.mondayCourses = result;
+  var cresult = app.courses.filter(function (course) {
+    return course != 'IT310';
+  });
+  app.courses = cresult;
   renderApp();
 };
 
 var it320sel = function it320sel() {
+  toggle420Visibility();
   if (!it320Selected) {
     addIT320();
   } else {
@@ -64,7 +80,7 @@ var addIT320 = function addIT320() {
   app.creditHours = app.creditHours + 3;
   app.tuition = app.tuition + 800;
   app.thursdayCourses.push('IT320');
-  disable420();
+  app.courses.push('IT320');
   renderApp();
 };
 
@@ -76,10 +92,15 @@ var removeIT320 = function removeIT320() {
     return course != 'IT320';
   });
   app.thursdayCourses = result;
+  var cresult = app.courses.filter(function (course) {
+    return course != 'IT320';
+  });
+  app.courses = cresult;
   renderApp();
 };
 
 var it340sel = function it340sel() {
+  toggle420Visibility();
   if (!it340Selected) {
     addIT340();
   } else {
@@ -92,7 +113,7 @@ var addIT340 = function addIT340() {
   app.creditHours = app.creditHours + 3;
   app.tuition = app.tuition + 800;
   app.wednesdayCourses.push('IT340');
-  disable420();
+  app.courses.push('IT340');
   renderApp();
 };
 
@@ -104,6 +125,10 @@ var removeIT340 = function removeIT340() {
     return course != 'IT340';
   });
   app.wednesdayCourses = result;
+  var cresult = app.courses.filter(function (course) {
+    return course != 'IT340';
+  });
+  app.courses = cresult;
   renderApp();
 };
 
@@ -129,10 +154,6 @@ var removeIT420 = function removeIT420() {
   renderApp();
 };
 
-var disable420 = function disable420() {
-  disabled420 = true;
-};
-
 var engl362sel = function engl362sel() {
   if (!engl362Selected) {
     addEngl362();
@@ -145,7 +166,8 @@ var addEngl362 = function addEngl362() {
   engl362Selected = true;
   app.creditHours = app.creditHours + 3;
   app.tuition = app.tuition + 800;
-  app.online = 'ENGL 362';
+  app.online = 'ENGL362';
+  app.courses.push('ENGL362');
   renderApp();
 };
 
@@ -154,6 +176,10 @@ var removeEngl362 = function removeEngl362() {
   app.creditHours = app.creditHours - 3;
   app.tuition = app.tuition - 800;
   app.online = '';
+  var cresult = app.courses.filter(function (course) {
+    return course != 'ENGL362';
+  });
+  app.courses = cresult;
   renderApp();
 };
 
@@ -170,6 +196,7 @@ var addMath365 = function addMath365() {
   app.creditHours = app.creditHours + 3;
   app.tuition = app.tuition + 800;
   app.tuesdayCourses.push('MATH365');
+  app.courses.push('MATH365');
   renderApp();
 };
 
@@ -181,6 +208,10 @@ var removeMath365 = function removeMath365() {
     return course != 'MATH365';
   });
   app.tuesdayCourses = result;
+  var cresult = app.courses.filter(function (course) {
+    return course != 'MATH365';
+  });
+  app.courses = cresult;
   renderApp();
 };
 
@@ -194,9 +225,17 @@ var clearAll = function clearAll() {
   app.creditHours = 0;
   app.tuition = 0;
   app.online = '';
+  visability = true;
   renderApp();
 };
 
+var review = function review() {
+  renderReviewApp();
+};
+
+var submit = function submit() {
+  renderSubmitApp();
+};
 var renderApp = function renderApp() {
   var template = React.createElement(
     'div',
@@ -212,7 +251,7 @@ var renderApp = function renderApp() {
     ),
     React.createElement(
       'main',
-      null,
+      { className: 'main' },
       React.createElement(
         'div',
         { className: 'calendar' },
@@ -451,6 +490,22 @@ var renderApp = function renderApp() {
             null,
             'Credit Hours: ',
             app.creditHours
+          ),
+          React.createElement(
+            'p',
+            null,
+            'Courses:'
+          ),
+          React.createElement(
+            'ul',
+            null,
+            app.courses.map(function (item) {
+              return React.createElement(
+                'li',
+                { key: item },
+                item
+              );
+            })
           )
         ),
         React.createElement(
@@ -704,7 +759,7 @@ var renderApp = function renderApp() {
               'REG 265'
             )
           ),
-          React.createElement(
+          visability && React.createElement(
             'div',
             { className: 'card' },
             React.createElement(
@@ -743,7 +798,7 @@ var renderApp = function renderApp() {
             ),
             React.createElement(
               'button',
-              { disabled: disabled420, className: 'cardbtn', onClick: it420sel },
+              { className: 'cardbtn', onClick: it420sel },
               'Thursday 1910 - 2200',
               React.createElement('br', null),
               'BEST 310'
@@ -756,7 +811,7 @@ var renderApp = function renderApp() {
         { className: 'review' },
         React.createElement(
           'button',
-          { id: 'review' },
+          { onClick: review, id: 'review' },
           'Review'
         ),
         React.createElement(
@@ -777,6 +832,568 @@ var renderApp = function renderApp() {
     )
   );
   ReactDOM.render(template, appRoot);
+};
+
+var renderReviewApp = function renderReviewApp() {
+  var reviewTemplate = React.createElement(
+    'div',
+    null,
+    React.createElement(
+      'header',
+      null,
+      React.createElement(
+        'h1',
+        null,
+        'BSIT Scheduler'
+      )
+    ),
+    React.createElement(
+      'main',
+      { className: 'reviewName' },
+      React.createElement(
+        'div',
+        { className: 'calendar' },
+        React.createElement(
+          'div',
+          { className: 'week' },
+          React.createElement(
+            'div',
+            { className: 'week-day monday' },
+            'Monday'
+          ),
+          app.mondayCourses.map(function (courses) {
+            return React.createElement(
+              'div',
+              { className: 'sixMoOClockClass', key: courses },
+              courses
+            );
+          }),
+          React.createElement(
+            'div',
+            { className: 'hour mhour1' },
+            '1600'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour mhour2' },
+            '1700'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour mhour3' },
+            '1800'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour mhour4' },
+            '1900'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour mhour5' },
+            '2000'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour mhour6' },
+            '2100'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour mhour7' },
+            '2200'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour mhour8' },
+            '2300'
+          ),
+          React.createElement(
+            'div',
+            { className: 'week-day tuesday' },
+            'Tuesday'
+          ),
+          app.tuesdayCourses.map(function (courses) {
+            return React.createElement(
+              'div',
+              { className: 'sevTuOClockClass', key: courses },
+              courses
+            );
+          }),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour1' },
+            '1600'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour2' },
+            '1700'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour3' },
+            '1800'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour4' },
+            '1900'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour5' },
+            '2000'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour6' },
+            '2100'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour7' },
+            '2200'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour8' },
+            '2300'
+          ),
+          React.createElement(
+            'div',
+            { className: 'week-day wednesday' },
+            'Wednesday'
+          ),
+          app.wednesdayCourses.map(function (courses) {
+            return React.createElement(
+              'div',
+              { className: 'sixWOClockClass', key: courses },
+              courses
+            );
+          }),
+          React.createElement(
+            'div',
+            { className: 'hour whour1' },
+            '1600'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour2' },
+            '1700'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour3' },
+            '1800'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour4' },
+            '1900'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour5' },
+            '2000'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour6' },
+            '2100'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour7' },
+            '2200'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour8' },
+            '2300'
+          ),
+          React.createElement(
+            'div',
+            { className: 'week-day thursday' },
+            'Thursday'
+          ),
+          app.thursdayCourses.map(function (courses) {
+            return React.createElement(
+              'div',
+              { className: 'sevThOClockClass', key: courses },
+              courses
+            );
+          }),
+          React.createElement(
+            'div',
+            { className: 'hour thhour1' },
+            '1600'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour2' },
+            '1700'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour3' },
+            '1800'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour4' },
+            '1900'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour5' },
+            '2000'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour6' },
+            '2100'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour7' },
+            '2200'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour8' },
+            '2300'
+          )
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'summary' },
+        React.createElement(
+          'div',
+          { className: 'coursesumm' },
+          React.createElement(
+            'h2',
+            null,
+            'Review'
+          ),
+          React.createElement(
+            'p',
+            null,
+            'ONLINE: ',
+            app.online
+          ),
+          React.createElement(
+            'p',
+            null,
+            'Credit Hours: ',
+            app.creditHours
+          ),
+          React.createElement(
+            'p',
+            null,
+            'Courses:'
+          ),
+          React.createElement(
+            'ul',
+            null,
+            app.courses.map(function (item) {
+              return React.createElement(
+                'li',
+                { key: item },
+                item
+              );
+            })
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'tutitionsumm' },
+          React.createElement(
+            'h2',
+            null,
+            'Tuition'
+          ),
+          React.createElement(
+            'p',
+            null,
+            'Course Cost: $',
+            app.tuition
+          )
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'review' },
+        React.createElement(
+          'button',
+          { onClick: submit, id: 'review' },
+          'Submit'
+        ),
+        React.createElement(
+          'button',
+          { onClick: clearAll },
+          'Go Back'
+        )
+      )
+    ),
+    React.createElement(
+      'footer',
+      null,
+      React.createElement(
+        'p',
+        null,
+        'BSIT Scheduler written by: Jason Savage, Hannah West, Scott Evans, and Kaleb Motilal.'
+      )
+    )
+  );
+  ReactDOM.render(reviewTemplate, appRoot);
+};
+
+var renderSubmitApp = function renderSubmitApp() {
+  var submitTemplate = React.createElement(
+    'div',
+    null,
+    React.createElement(
+      'header',
+      null,
+      React.createElement(
+        'h1',
+        null,
+        'BSIT Scheduler'
+      )
+    ),
+    React.createElement(
+      'main',
+      { className: 'submitMain' },
+      React.createElement(
+        'div',
+        { className: 'calendar' },
+        React.createElement(
+          'div',
+          { className: 'week' },
+          React.createElement(
+            'div',
+            { className: 'week-day monday' },
+            'Monday'
+          ),
+          app.mondayCourses.map(function (courses) {
+            return React.createElement(
+              'div',
+              { className: 'sixMoOClockClass', key: courses },
+              courses
+            );
+          }),
+          React.createElement(
+            'div',
+            { className: 'hour mhour1' },
+            '1600'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour mhour2' },
+            '1700'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour mhour3' },
+            '1800'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour mhour4' },
+            '1900'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour mhour5' },
+            '2000'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour mhour6' },
+            '2100'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour mhour7' },
+            '2200'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour mhour8' },
+            '2300'
+          ),
+          React.createElement(
+            'div',
+            { className: 'week-day tuesday' },
+            'Tuesday'
+          ),
+          app.tuesdayCourses.map(function (courses) {
+            return React.createElement(
+              'div',
+              { className: 'sevTuOClockClass', key: courses },
+              courses
+            );
+          }),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour1' },
+            '1600'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour2' },
+            '1700'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour3' },
+            '1800'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour4' },
+            '1900'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour5' },
+            '2000'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour6' },
+            '2100'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour7' },
+            '2200'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour tuhour8' },
+            '2300'
+          ),
+          React.createElement(
+            'div',
+            { className: 'week-day wednesday' },
+            'Wednesday'
+          ),
+          app.wednesdayCourses.map(function (courses) {
+            return React.createElement(
+              'div',
+              { className: 'sixWOClockClass', key: courses },
+              courses
+            );
+          }),
+          React.createElement(
+            'div',
+            { className: 'hour whour1' },
+            '1600'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour2' },
+            '1700'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour3' },
+            '1800'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour4' },
+            '1900'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour5' },
+            '2000'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour6' },
+            '2100'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour7' },
+            '2200'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour whour8' },
+            '2300'
+          ),
+          React.createElement(
+            'div',
+            { className: 'week-day thursday' },
+            'Thursday'
+          ),
+          app.thursdayCourses.map(function (courses) {
+            return React.createElement(
+              'div',
+              { className: 'sevThOClockClass', key: courses },
+              courses
+            );
+          }),
+          React.createElement(
+            'div',
+            { className: 'hour thhour1' },
+            '1600'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour2' },
+            '1700'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour3' },
+            '1800'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour4' },
+            '1900'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour5' },
+            '2000'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour6' },
+            '2100'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour7' },
+            '2200'
+          ),
+          React.createElement(
+            'div',
+            { className: 'hour thhour8' },
+            '2300'
+          )
+        )
+      )
+    ),
+    React.createElement(
+      'footer',
+      null,
+      React.createElement(
+        'p',
+        null,
+        'BSIT Scheduler written by: Jason Savage, Hannah West, Scott Evans, and Kaleb Motilal.'
+      )
+    )
+  );
+  ReactDOM.render(submitTemplate, appRoot);
 };
 
 renderApp();
