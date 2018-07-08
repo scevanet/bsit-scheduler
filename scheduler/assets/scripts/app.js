@@ -6,7 +6,7 @@ var appRoot = document.getElementById('app');
 
 var app = {
   creditHours: 0,
-  tuition: 0,
+  tuition: 0.00,
   courses: [],
   online: '',
   mondayCourses: [],
@@ -45,7 +45,7 @@ var it310sel = function it310sel() {
 var addIT310 = function addIT310() {
   it310Selected = true;
   app.creditHours = app.creditHours + 3;
-  app.tuition = app.tuition + 800;
+  app.tuition = app.tuition + 498.50 * 3;
   app.mondayCourses.push('IT310');
   app.courses.push('IT310');
   renderApp();
@@ -54,7 +54,7 @@ var addIT310 = function addIT310() {
 var removeIT310 = function removeIT310() {
   it310Selected = false;
   app.creditHours = app.creditHours - 3;
-  app.tuition = app.tuition - 800;
+  app.tuition = app.tuition - 498.50 * 3;
   var result = app.mondayCourses.filter(function (course) {
     return course != 'IT310';
   });
@@ -78,7 +78,7 @@ var it320sel = function it320sel() {
 var addIT320 = function addIT320() {
   it320Selected = true;
   app.creditHours = app.creditHours + 3;
-  app.tuition = app.tuition + 800;
+  app.tuition = app.tuition + 498.50 * 3;
   app.thursdayCourses.push('IT320');
   app.courses.push('IT320');
   renderApp();
@@ -87,7 +87,7 @@ var addIT320 = function addIT320() {
 var removeIT320 = function removeIT320() {
   it320Selected = false;
   app.creditHours = app.creditHours - 3;
-  app.tuition = app.tuition - 800;
+  app.tuition = app.tuition - 498.50 * 3;
   var result = app.thursdayCourses.filter(function (course) {
     return course != 'IT320';
   });
@@ -111,7 +111,7 @@ var it340sel = function it340sel() {
 var addIT340 = function addIT340() {
   it340Selected = true;
   app.creditHours = app.creditHours + 3;
-  app.tuition = app.tuition + 800;
+  app.tuition = app.tuition + 498.50 * 3;
   app.wednesdayCourses.push('IT340');
   app.courses.push('IT340');
   renderApp();
@@ -120,7 +120,7 @@ var addIT340 = function addIT340() {
 var removeIT340 = function removeIT340() {
   it340Selected = false;
   app.creditHours = app.creditHours - 3;
-  app.tuition = app.tuition - 800;
+  app.tuition = app.tuition - 498.50 * 3;
   var result = app.wednesdayCourses.filter(function (course) {
     return course != 'IT340';
   });
@@ -143,14 +143,14 @@ var it420sel = function it420sel() {
 var addIT420 = function addIT420() {
   it420Selected = true;
   app.creditHours = app.creditHours + 3;
-  app.tuition = app.tuition + 800;
+  app.tuition = app.tuition + 498.50 * 3;
   renderApp();
 };
 
 var removeIT420 = function removeIT420() {
   it420Selected = false;
   app.creditHours = app.creditHours - 3;
-  app.tuition = app.tuition - 800;
+  app.tuition = app.tuition - 498.50 * 3;
   renderApp();
 };
 
@@ -165,7 +165,7 @@ var engl362sel = function engl362sel() {
 var addEngl362 = function addEngl362() {
   engl362Selected = true;
   app.creditHours = app.creditHours + 3;
-  app.tuition = app.tuition + 800;
+  app.tuition = app.tuition + 498.50 * 3;
   app.online = 'ENGL362';
   app.courses.push('ENGL362');
   renderApp();
@@ -174,7 +174,7 @@ var addEngl362 = function addEngl362() {
 var removeEngl362 = function removeEngl362() {
   engl362Selected = false;
   app.creditHours = app.creditHours - 3;
-  app.tuition = app.tuition - 800;
+  app.tuition = app.tuition - 498.50 * 3;
   app.online = '';
   var cresult = app.courses.filter(function (course) {
     return course != 'ENGL362';
@@ -194,7 +194,7 @@ var math365sel = function math365sel() {
 var addMath365 = function addMath365() {
   math365Selected = true;
   app.creditHours = app.creditHours + 3;
-  app.tuition = app.tuition + 800;
+  app.tuition = app.tuition + 498.50 * 3;
   app.tuesdayCourses.push('MATH365');
   app.courses.push('MATH365');
   renderApp();
@@ -203,7 +203,7 @@ var addMath365 = function addMath365() {
 var removeMath365 = function removeMath365() {
   math365Selected = false;
   app.creditHours = app.creditHours - 3;
-  app.tuition = app.tuition - 800;
+  app.tuition = app.tuition - 498.50 * 3;
   var result = app.tuesdayCourses.filter(function (course) {
     return course != 'MATH365';
   });
@@ -223,7 +223,7 @@ var clearAll = function clearAll() {
   removeIT420();
   removeMath365();
   app.creditHours = 0;
-  app.tuition = 0;
+  app.tuition = 0.00;
   app.online = '';
   visability = true;
   renderApp();
@@ -520,7 +520,7 @@ var renderApp = function renderApp() {
             'p',
             null,
             'Course Cost: $',
-            app.tuition
+            app.tuition.toFixed(2)
           )
         )
       ),
@@ -1118,7 +1118,7 @@ var renderReviewApp = function renderReviewApp() {
             'p',
             null,
             'Course Cost: $',
-            app.tuition
+            app.tuition.toFixed(2)
           )
         )
       ),

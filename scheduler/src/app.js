@@ -4,7 +4,7 @@ const appRoot = document.getElementById('app');
 
 const app = {
   creditHours: 0,
-  tuition: 0,
+  tuition: 0.00,
   courses: [],
   online: '',
   mondayCourses: [],
@@ -46,7 +46,7 @@ const it310sel = () => {
 const addIT310 = () => {
   it310Selected = true;
   app.creditHours = app.creditHours + 3;
-  app.tuition = app.tuition + 800;
+  app.tuition = app.tuition + (498.50 * 3);
   app.mondayCourses.push('IT310');
   app.courses.push('IT310');
   renderApp();
@@ -55,7 +55,7 @@ const addIT310 = () => {
 const removeIT310 = () => {
   it310Selected = false;
   app.creditHours = app.creditHours - 3;
-  app.tuition = app.tuition - 800;
+  app.tuition = app.tuition - (498.50 * 3);
   const result = app.mondayCourses.filter(course => course != 'IT310');
   app.mondayCourses = result;
   const cresult = app.courses.filter(course => course != 'IT310');
@@ -76,7 +76,7 @@ const it320sel = () => {
 const addIT320 = () => {
   it320Selected = true;
   app.creditHours = app.creditHours + 3;
-  app.tuition = app.tuition + 800;
+  app.tuition = app.tuition + (498.50 * 3);
   app.thursdayCourses.push('IT320');
   app.courses.push('IT320');
   renderApp();
@@ -85,7 +85,7 @@ const addIT320 = () => {
 const removeIT320 = () => {
   it320Selected = false;
   app.creditHours = app.creditHours - 3;
-  app.tuition = app.tuition - 800;
+  app.tuition = app.tuition - (498.50 * 3);
   const result = app.thursdayCourses.filter(course => course != 'IT320');
   app.thursdayCourses = result;
   const cresult = app.courses.filter(course => course != 'IT320');
@@ -106,7 +106,7 @@ const it340sel = () => {
 const addIT340 = () => {
   it340Selected = true;
   app.creditHours = app.creditHours + 3;
-  app.tuition = app.tuition + 800;
+  app.tuition = app.tuition + (498.50 * 3);
   app.wednesdayCourses.push('IT340');
   app.courses.push('IT340');
   renderApp();
@@ -115,7 +115,7 @@ const addIT340 = () => {
 const removeIT340 = () => {
   it340Selected = false;
   app.creditHours = app.creditHours - 3;
-  app.tuition = app.tuition - 800;
+  app.tuition = app.tuition - (498.50 * 3);
   const result = app.wednesdayCourses.filter(course => course != 'IT340');
   app.wednesdayCourses = result;
   const cresult = app.courses.filter(course => course != 'IT340');
@@ -135,14 +135,14 @@ const it420sel = () => {
 const addIT420 = () => {
   it420Selected = true;
   app.creditHours = app.creditHours + 3;
-  app.tuition = app.tuition + 800;
+  app.tuition = app.tuition + (498.50 * 3);
   renderApp();
 }
 
 const removeIT420 = () => {
   it420Selected = false;
   app.creditHours = app.creditHours - 3;
-  app.tuition = app.tuition - 800;
+  app.tuition = app.tuition - (498.50 * 3);
   renderApp();
 }
 
@@ -158,7 +158,7 @@ const engl362sel = () => {
 const addEngl362 = () => {
   engl362Selected = true;
   app.creditHours = app.creditHours + 3;
-  app.tuition = app.tuition + 800;
+  app.tuition = app.tuition + (498.50 * 3);
   app.online = 'ENGL362';
   app.courses.push('ENGL362');
   renderApp();
@@ -167,7 +167,7 @@ const addEngl362 = () => {
 const removeEngl362 = () => {
   engl362Selected = false;
   app.creditHours = app.creditHours - 3;
-  app.tuition = app.tuition - 800;
+  app.tuition = app.tuition - (498.50 * 3);
   app.online = '';
   const cresult = app.courses.filter(course => course != 'ENGL362');
   app.courses = cresult;
@@ -186,7 +186,7 @@ const math365sel = () => {
 const addMath365 = () => {
   math365Selected = true;
   app.creditHours = app.creditHours + 3;
-  app.tuition = app.tuition + 800;
+  app.tuition = app.tuition + (498.50 * 3);
   app.tuesdayCourses.push('MATH365');
   app.courses.push('MATH365');
   renderApp();
@@ -195,7 +195,7 @@ const addMath365 = () => {
 const removeMath365 = () => {
   math365Selected = false;
   app.creditHours = app.creditHours - 3;
-  app.tuition = app.tuition - 800;
+  app.tuition = app.tuition - (498.50 * 3);
   const result = app.tuesdayCourses.filter(course => course != 'MATH365');
   app.tuesdayCourses = result;
   const cresult = app.courses.filter(course => course != 'MATH365');
@@ -211,7 +211,7 @@ const clearAll = () => {
   removeIT420();
   removeMath365();
   app.creditHours = 0;
-  app.tuition = 0;
+  app.tuition = 0.00;
   app.online = '';
   visability = true;
   renderApp();
@@ -289,7 +289,7 @@ const renderApp = () => {
         </div>
         <div className="tutitionsumm">
           <h2>Tuition</h2>
-          <p>Course Cost: ${app.tuition}</p>
+          <p>Course Cost: ${app.tuition.toFixed(2)}</p>
         </div>
       </div>
       <div className="courses">
@@ -444,7 +444,7 @@ const renderReviewApp = () => {
         </div>
         <div className="tutitionsumm">
           <h2>Tuition</h2>
-          <p>Course Cost: ${app.tuition}</p>
+          <p>Course Cost: ${app.tuition.toFixed(2)}</p>
         </div>
       </div>
       <div className="review">
