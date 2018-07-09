@@ -12,7 +12,13 @@ var app = {
   mondayCourses: [],
   tuesdayCourses: [],
   wednesdayCourses: [],
-  thursdayCourses: []
+  thursdayCourses: [],
+  it310btnText: 'Add',
+  it320btnText: 'Add',
+  it340btnText: 'Add',
+  it4200btnText: 'Add',
+  engl362btnText: 'Add',
+  math365btnText: 'Add'
 };
 
 var it310Selected = false;
@@ -47,6 +53,7 @@ var addIT310 = function addIT310() {
   app.tuition = app.tuition + 498.50 * 3;
   app.mondayCourses.push('IT310');
   app.courses.push('IT310');
+  app.it310btnText = 'Remove';
   renderApp();
 };
 
@@ -62,6 +69,10 @@ var removeIT310 = function removeIT310() {
     return course != 'IT310';
   });
   app.courses = cresult;
+  if (app.courses.length == 0) {
+    visability = true;
+  }
+  app.it310btnText = 'Add';
   renderApp();
 };
 
@@ -80,6 +91,7 @@ var addIT320 = function addIT320() {
   app.tuition = app.tuition + 498.50 * 3;
   app.thursdayCourses.push('IT320');
   app.courses.push('IT320');
+  app.it320btnText = 'Remove';
   renderApp();
 };
 
@@ -95,6 +107,10 @@ var removeIT320 = function removeIT320() {
     return course != 'IT320';
   });
   app.courses = cresult;
+  if (app.courses.length == 0) {
+    visability = true;
+  }
+  app.it320btnText = 'Add';
   renderApp();
 };
 
@@ -113,6 +129,7 @@ var addIT340 = function addIT340() {
   app.tuition = app.tuition + 498.50 * 3;
   app.wednesdayCourses.push('IT340');
   app.courses.push('IT340');
+  app.it340btnText = 'Remove';
   renderApp();
 };
 
@@ -128,6 +145,10 @@ var removeIT340 = function removeIT340() {
     return course != 'IT340';
   });
   app.courses = cresult;
+  if (app.courses.length == 0) {
+    visability = true;
+  }
+  app.it340btnText = 'Add';
   renderApp();
 };
 
@@ -143,6 +164,7 @@ var addIT420 = function addIT420() {
   it420Selected = true;
   app.creditHours = app.creditHours + 3;
   app.tuition = app.tuition + 498.50 * 3;
+  app.it420btnText = 'Remove';
   renderApp();
 };
 
@@ -150,6 +172,7 @@ var removeIT420 = function removeIT420() {
   it420Selected = false;
   app.creditHours = app.creditHours - 3;
   app.tuition = app.tuition - 498.50 * 3;
+  app.it420btnText = 'Add';
   renderApp();
 };
 
@@ -167,6 +190,7 @@ var addEngl362 = function addEngl362() {
   app.tuition = app.tuition + 498.50 * 3;
   app.online = 'ENGL362';
   app.courses.push('ENGL362');
+  app.engl362btnText = 'Remove';
   renderApp();
 };
 
@@ -179,6 +203,7 @@ var removeEngl362 = function removeEngl362() {
     return course != 'ENGL362';
   });
   app.courses = cresult;
+  app.engl362btnText = 'Add';
   renderApp();
 };
 
@@ -196,6 +221,7 @@ var addMath365 = function addMath365() {
   app.tuition = app.tuition + 498.50 * 3;
   app.tuesdayCourses.push('MATH365');
   app.courses.push('MATH365');
+  app.math365btnText = 'Remove';
   renderApp();
 };
 
@@ -211,6 +237,7 @@ var removeMath365 = function removeMath365() {
     return course != 'MATH365';
   });
   app.courses = cresult;
+  app.math365btnText = 'Add';
   renderApp();
 };
 
@@ -242,6 +269,7 @@ var renderApp = function renderApp() {
     React.createElement(
       'header',
       null,
+      React.createElement('img', { src: 'assets/images/header.jpg' }),
       React.createElement(
         'h1',
         null,
@@ -544,7 +572,8 @@ var renderApp = function renderApp() {
             ),
             React.createElement(
               'a',
-              { href: '#' },
+              { href: 'https://it.eecs.ku.edu/it310', target: '_blank',
+                title: 'IT 310' },
               'Course Description'
             ),
             React.createElement(
@@ -553,23 +582,19 @@ var renderApp = function renderApp() {
               React.createElement(
                 'li',
                 null,
-                'Something about the course'
+                'Machine-level representation of data, digital logic and digital systems, computer architecture and organization, computing infrastructure, introduction to multiprocessing systems, firmware, hardware and software integration , introduction to intersystems communications, enterprise deployment management introduction to virtual machine emulation, platform technologies.'
               ),
               React.createElement(
                 'li',
                 null,
-                'Something else about the course'
-              ),
-              React.createElement(
-                'li',
-                null,
-                'Third something about the course'
+                'Prerequisite: Upper-level IT eligibility.'
               )
             ),
             React.createElement(
               'button',
               { id: 'it310', className: 'cardbtn', onClick: it310sel },
-              'Click Here to Add',
+              'Click Here to ',
+              app.it310btnText,
               React.createElement('br', null),
               'Monday 1810 - 2100',
               React.createElement('br', null),
@@ -591,7 +616,8 @@ var renderApp = function renderApp() {
             ),
             React.createElement(
               'a',
-              { href: '#' },
+              { href: 'https://it.eecs.ku.edu/it320', target: '_blank',
+                title: 'IT 320' },
               'Course Description'
             ),
             React.createElement(
@@ -600,23 +626,19 @@ var renderApp = function renderApp() {
               React.createElement(
                 'li',
                 null,
-                'Something about the course'
+                'This course introduces operating systems and network administration and presents topics related to selection, installation, configuration, and maintenance of operating systems and computer networks. Topics to be covered include: Unix and Windows operating systems installation, configuration, and maintenance, server administration and management, client and server services, user and group management and support, software systems installation and configuration, content management and deployment, security management, network administration, backup management and disaster recovery, resource management, automation management, operating systems and Web domain management, operating systems and application version control management. A laboratory component will provide hands-on experience with system and network administration.'
               ),
               React.createElement(
                 'li',
                 null,
-                'Something else about the course'
-              ),
-              React.createElement(
-                'li',
-                null,
-                'Third something about the course'
+                'Prerequisite: Upper-level IT eligibility. Corequisite: IT 310.'
               )
             ),
             React.createElement(
               'button',
               { id: 'it320', className: 'cardbtn', onClick: it320sel },
-              'Click Here to Add',
+              'Click Here to ',
+              app.it320btnText,
               React.createElement('br', null),
               'Thursday 1910 - 2200',
               React.createElement('br', null),
@@ -638,7 +660,8 @@ var renderApp = function renderApp() {
             ),
             React.createElement(
               'a',
-              { href: '#' },
+              { href: 'https://it.eecs.ku.edu/it340', target: '_blank',
+                title: 'IT 340' },
               'Course Description'
             ),
             React.createElement(
@@ -647,23 +670,19 @@ var renderApp = function renderApp() {
               React.createElement(
                 'li',
                 null,
-                'Something about the course'
+                'Fundamentals of computer security, security mechanisms, information states, security attacks, threat analysis models, vulnerability analysis models, introduction to cryptography, authentication, intrusion detection, intrusion prevention (firewalls), operating systems security, database security, software security, host hardening, incident and disaster response.'
               ),
               React.createElement(
                 'li',
                 null,
-                'Something else about the course'
-              ),
-              React.createElement(
-                'li',
-                null,
-                'Third something about the course'
+                'Upper-level IT eligibility'
               )
             ),
             React.createElement(
               'button',
               { id: 'it340', className: 'cardbtn', onClick: it340sel },
-              'Click Here to Add',
+              'Click Here to ',
+              app.it340btnText,
               React.createElement('br', null),
               'Wednesday 1800 - 2100',
               React.createElement('br', null),
@@ -714,7 +733,8 @@ var renderApp = function renderApp() {
             React.createElement(
               'button',
               { id: 'engl362online', className: 'cardbtn', onClick: engl362sel },
-              'Click Here to Add',
+              'Click Here to ',
+              app.engl362btnText,
               React.createElement('br', null),
               'ONLINE',
               React.createElement('br', null),
@@ -745,23 +765,14 @@ var renderApp = function renderApp() {
               React.createElement(
                 'li',
                 null,
-                'Something about the course'
-              ),
-              React.createElement(
-                'li',
-                null,
-                'Something else about the course'
-              ),
-              React.createElement(
-                'li',
-                null,
-                'Third something about the course'
+                'Introduces students to the principles of technical communication. Students learn to organize, develop, write, and revise various technical documents (e.g., letters, manuals, presentations, proposals, reports, resumes, websites) often needed in business, engineering and scientific settings. Includes an introduction to technical-writing software. This course fulfills the prerequisite for English 562 and English 564. Prerequisite: Prior completion of the KU Core Written Communication requirement.'
               )
             ),
             React.createElement(
               'button',
               { id: 'math365', className: 'cardbtn', onClick: math365sel },
-              'Click Here to Add',
+              'Click Here to ',
+              app.math365btnText,
               React.createElement('br', null),
               'Tuesday 1910 - 2200',
               React.createElement('br', null),
@@ -783,7 +794,8 @@ var renderApp = function renderApp() {
             ),
             React.createElement(
               'a',
-              { href: '#' },
+              { href: 'https://it.eecs.ku.edu/it420', target: '_blank',
+                title: 'IT 420' },
               'Course Description'
             ),
             React.createElement(
@@ -792,17 +804,12 @@ var renderApp = function renderApp() {
               React.createElement(
                 'li',
                 null,
-                'Something about the course'
+                'This course introduces operating systems principles and associated key concepts. Topics to be discussed include: processes and threads, concurrency, scheduling and dispatch, memory management, processor management, device management, security and protection, file system, disk scheduling, real-time and embedded systems, fault tolerance, scripting, and an introduction to virtualization.'
               ),
               React.createElement(
                 'li',
                 null,
-                'Something else about the course'
-              ),
-              React.createElement(
-                'li',
-                null,
-                'Third something about the course'
+                'Prerequisite: MATH 365, IT 320, and IT 342'
               )
             ),
             React.createElement(
@@ -835,6 +842,39 @@ var renderApp = function renderApp() {
     React.createElement(
       'footer',
       null,
+      React.createElement(
+        'p',
+        null,
+        React.createElement(
+          'a',
+          { href: 'https://ku.edu', target: '_blank' },
+          React.createElement('img', { src: 'assets/images/jayhawk.jpg' })
+        )
+      ),
+      React.createElement(
+        'h3',
+        null,
+        'Helpful Links'
+      ),
+      React.createElement(
+        'p',
+        null,
+        React.createElement(
+          'a',
+          { href: 'https://kuisc.com/', target: '_blank' },
+          'Jayhackers'
+        ),
+        React.createElement(
+          'a',
+          { href: 'https://edwardscampus.ku.edu/overview-bachelors-information-technology', target: '_blank' },
+          'BSIT'
+        ),
+        React.createElement(
+          'a',
+          { href: 'http://employment.ku.edu/', target: '_blank' },
+          'Jobs'
+        )
+      ),
       React.createElement(
         'p',
         null,

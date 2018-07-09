@@ -10,7 +10,13 @@ const app = {
   mondayCourses: [],
   tuesdayCourses: [],
   wednesdayCourses: [],
-  thursdayCourses: []
+  thursdayCourses: [],
+  it310btnText: 'Add',
+  it320btnText: 'Add',
+  it340btnText: 'Add',
+  it4200btnText: 'Add',
+  engl362btnText: 'Add',
+  math365btnText: 'Add'
 };
 
 let it310Selected = false;
@@ -47,6 +53,7 @@ const addIT310 = () => {
   app.tuition = app.tuition + (498.50 * 3);
   app.mondayCourses.push('IT310');
   app.courses.push('IT310');
+  app.it310btnText = 'Remove';
   renderApp();
 }
 
@@ -58,6 +65,10 @@ const removeIT310 = () => {
   app.mondayCourses = result;
   const cresult = app.courses.filter(course => course != 'IT310');
   app.courses = cresult;
+  if (app.courses.length == 0) {
+    visability = true;
+  }
+  app.it310btnText = 'Add';
   renderApp();
 }
 
@@ -77,6 +88,7 @@ const addIT320 = () => {
   app.tuition = app.tuition + (498.50 * 3);
   app.thursdayCourses.push('IT320');
   app.courses.push('IT320');
+  app.it320btnText = 'Remove';
   renderApp();
 }
 
@@ -88,6 +100,10 @@ const removeIT320 = () => {
   app.thursdayCourses = result;
   const cresult = app.courses.filter(course => course != 'IT320');
   app.courses = cresult;
+  if (app.courses.length == 0) {
+    visability = true;
+  }
+  app.it320btnText = 'Add';
   renderApp();
 }
 
@@ -107,6 +123,7 @@ const addIT340 = () => {
   app.tuition = app.tuition + (498.50 * 3);
   app.wednesdayCourses.push('IT340');
   app.courses.push('IT340');
+  app.it340btnText = 'Remove';
   renderApp();
 }
 
@@ -118,6 +135,10 @@ const removeIT340 = () => {
   app.wednesdayCourses = result;
   const cresult = app.courses.filter(course => course != 'IT340');
   app.courses = cresult;
+  if (app.courses.length == 0) {
+    visability = true;
+  }
+  app.it340btnText = 'Add';
   renderApp();
 }
 
@@ -134,6 +155,7 @@ const addIT420 = () => {
   it420Selected = true;
   app.creditHours = app.creditHours + 3;
   app.tuition = app.tuition + (498.50 * 3);
+  app.it420btnText = 'Remove';
   renderApp();
 }
 
@@ -141,6 +163,7 @@ const removeIT420 = () => {
   it420Selected = false;
   app.creditHours = app.creditHours - 3;
   app.tuition = app.tuition - (498.50 * 3);
+  app.it420btnText = 'Add';
   renderApp();
 }
 
@@ -159,6 +182,7 @@ const addEngl362 = () => {
   app.tuition = app.tuition + (498.50 * 3);
   app.online = 'ENGL362';
   app.courses.push('ENGL362');
+  app.engl362btnText = 'Remove';
   renderApp();
 }
 
@@ -169,6 +193,7 @@ const removeEngl362 = () => {
   app.online = '';
   const cresult = app.courses.filter(course => course != 'ENGL362');
   app.courses = cresult;
+  app.engl362btnText = 'Add';
   renderApp();
 }
 
@@ -187,6 +212,7 @@ const addMath365 = () => {
   app.tuition = app.tuition + (498.50 * 3);
   app.tuesdayCourses.push('MATH365');
   app.courses.push('MATH365');
+  app.math365btnText = 'Remove';
   renderApp();
 }
 
@@ -198,6 +224,7 @@ const removeMath365 = () => {
   app.tuesdayCourses = result;
   const cresult = app.courses.filter(course => course != 'MATH365');
   app.courses = cresult;
+  app.math365btnText = 'Add';
   renderApp();
 }
 
@@ -226,6 +253,7 @@ const renderApp = () => {
   const template = (
     <div>
     <header>
+        <img src="assets/images/header.jpg" />
       <h1>BSIT Scheduler</h1>
     </header>
     <main className="main">
@@ -295,35 +323,61 @@ const renderApp = () => {
           <div className="card">
             <h4>IT 310 -- Computer Organization Platforms & Technologies</h4>
             <p>8/20/2018 - 12/14/2018</p>
-            <a href="#">Course Description</a>
+            <a href="https://it.eecs.ku.edu/it310" target = "_blank"
+            title="IT 310">Course Description</a>
             <ul>
-              <li>Something about the course</li>
-              <li>Something else about the course</li>
-              <li>Third something about the course</li>
+              <li>Machine-level representation of data, digital logic and digital
+              systems, computer architecture and organization, computing
+              infrastructure, introduction to multiprocessing systems, firmware,
+              hardware and software integration , introduction to intersystems
+              communications, enterprise deployment management introduction to
+              virtual machine emulation, platform technologies.</li>
+              <li>Prerequisite: Upper-level IT eligibility.</li>
             </ul>
-            <button id="it310" className="cardbtn" onClick={it310sel}>Click Here to Add<br />Monday 1810 - 2100<br />BEST 230</button>
+            <button id="it310" className="cardbtn" onClick={it310sel}>Click Here to {app.it310btnText}<br />Monday 1810 - 2100<br />BEST 230</button>
           </div>
           <div className="card">
             <h4>IT 320 -- Systems and Networking Administration</h4>
             <p>8/20/2018 - 12/14/2018</p>
-            <a href="#">Course Description</a>
+            <a href="https://it.eecs.ku.edu/it320" target = "_blank"
+            title="IT 320">Course Description</a>
             <ul>
-              <li>Something about the course</li>
-              <li>Something else about the course</li>
-              <li>Third something about the course</li>
+              <li>This course introduces operating systems and network
+                administration and presents topics related to selection,
+                installation, configuration, and maintenance of operating
+                systems and computer networks. Topics to be covered include:
+                Unix and Windows operating systems installation, configuration,
+                and maintenance, server administration and management, client
+                and server services, user and group management and support,
+                software systems installation and configuration,
+                content management and deployment, security management,
+                network administration, backup management and disaster
+                recovery, resource management, automation management,
+                operating systems and Web domain management,
+                operating systems and application version control management.
+                A laboratory component will provide hands-on experience with
+                system and network administration.</li>
+              <li>Prerequisite: Upper-level IT eligibility. Corequisite: IT 310.
+              </li>
             </ul>
-            <button id="it320" className="cardbtn" onClick={it320sel}>Click Here to Add<br />Thursday 1910 - 2200<br />BEST 230</button>
+            <button id="it320" className="cardbtn" onClick={it320sel}>Click Here to {app.it320btnText}<br />Thursday 1910 - 2200<br />BEST 230</button>
           </div>
           <div className="card">
             <h4>IT 340 -- Computer and Information Security</h4>
             <p>8/20/2018 - 12/14/2018</p>
-            <a href="#">Course Description</a>
+            <a href="https://it.eecs.ku.edu/it340" target = "_blank"
+            title="IT 340">Course Description</a>
             <ul>
-              <li>Something about the course</li>
-              <li>Something else about the course</li>
-              <li>Third something about the course</li>
+              <li>Fundamentals of computer security, security mechanisms,
+                information states, security attacks, threat analysis models,
+                vulnerability analysis models, introduction to cryptography,
+                authentication, intrusion detection, intrusion prevention
+                (firewalls), operating systems security, database security,
+                software security, host hardening, incident and disaster
+                response.</li>
+              <li>Upper-level IT eligibility</li>
             </ul>
-            <button id="it340" className="cardbtn" onClick={it340sel}>Click Here to Add<br />Wednesday 1800 - 2100<br />BEST 130</button>
+            <button id="it340" className="cardbtn" onClick={it340sel}>Click Here to {app.it340btnText}<br />Wednesday 1800 - 2100<br />BEST 130</button>
           </div>
         </div>
         <div className="column">
@@ -336,28 +390,40 @@ const renderApp = () => {
               <li>Something else about the course</li>
               <li>Third something about the course</li>
             </ul>
-            <button id="engl362online" className="cardbtn" onClick={engl362sel}>Click Here to Add<br />ONLINE<br />ONLINE</button>
+            <button id="engl362online" className="cardbtn" onClick={engl362sel}>Click Here to {app.engl362btnText}<br />ONLINE<br />ONLINE</button>
           </div>
           <div className="card">
             <h4>MATH 365 -- Elementary Statistics</h4>
             <p>8/20/2018 - 12/14/2018</p>
             <a href="#">Course Description</a>
             <ul>
-              <li>Something about the course</li>
-              <li>Something else about the course</li>
-              <li>Third something about the course</li>
+              <li>Introduces students to the principles of technical
+                communication. Students learn to organize, develop, write,
+                and revise various technical documents (e.g., letters, manuals,
+                  presentations, proposals, reports, resumes, websites) often
+                  needed in business, engineering and scientific settings.
+                  Includes an introduction to technical-writing software.
+                  This course fulfills the prerequisite for English 562 and
+                  English 564. Prerequisite: Prior completion of the KU Core
+                  Written Communication requirement.</li>
             </ul>
-            <button id="math365" className="cardbtn" onClick={math365sel}>Click Here to Add<br />Tuesday 1910 - 2200<br />REG 265</button>
+            <button id="math365" className="cardbtn" onClick={math365sel}>Click Here to {app.math365btnText}<br />Tuesday 1910 - 2200<br />REG 265</button>
           </div>
           {visability && (
           <div className="card">
             <h4>IT 420 -- Operating Systems</h4>
             <p>8/20/2018 - 12/14/2018</p>
-            <a href="#">Course Description</a>
+            <a href="https://it.eecs.ku.edu/it420" target = "_blank"
+            title="IT 420">Course Description</a>
             <ul>
-              <li>Something about the course</li>
-              <li>Something else about the course</li>
-              <li>Third something about the course</li>
+              <li>This course introduces operating systems principles and
+                associated key concepts. Topics to be discussed include:
+                processes and threads, concurrency, scheduling and dispatch,
+                memory management, processor management, device management,
+                security and protection, file system, disk scheduling,
+                real-time and embedded systems, fault tolerance, scripting,
+                and an introduction to virtualization.</li>
+                <li>Prerequisite: MATH 365, IT 320, and IT 342</li>
             </ul>
             <button className="cardbtn" onClick={it420sel}>Click Here to Add<br />Thursday 1910 - 2200<br />BEST 310</button>
           </div>
@@ -369,6 +435,17 @@ const renderApp = () => {
       </div>
     </main>
     <footer>
+      <p>
+        <a href="https://ku.edu" target="_blank">
+          <img src="assets/images/jayhawk.jpg" />
+        </a>
+      </p>
+      <h3>Helpful Links</h3>
+      <p>
+        <a href="https://kuisc.com/" target="_blank">Jayhackers</a>
+        <a href="https://edwardscampus.ku.edu/overview-bachelors-information-technology" target="_blank">BSIT</a>
+        <a href="http://employment.ku.edu/" target="_blank">Jobs</a>
+      </p>
       <p>BSIT Scheduler written by: Jason Savage, Hannah West, Scott Evans, and
       Kaleb Motilal.</p>
     </footer>
