@@ -25,7 +25,6 @@ var visability = true;
 
 var toggle420Visibility = function toggle420Visibility() {
   if (app.courses.length == 0) {
-    // array does not exist, is not an array, or is empty
     visability = !visability;
     renderApp();
   } else {
@@ -570,6 +569,8 @@ var renderApp = function renderApp() {
             React.createElement(
               'button',
               { id: 'it310', className: 'cardbtn', onClick: it310sel },
+              'Click Here to Add',
+              React.createElement('br', null),
               'Monday 1810 - 2100',
               React.createElement('br', null),
               'BEST 230'
@@ -615,6 +616,8 @@ var renderApp = function renderApp() {
             React.createElement(
               'button',
               { id: 'it320', className: 'cardbtn', onClick: it320sel },
+              'Click Here to Add',
+              React.createElement('br', null),
               'Thursday 1910 - 2200',
               React.createElement('br', null),
               'BEST 230'
@@ -660,6 +663,8 @@ var renderApp = function renderApp() {
             React.createElement(
               'button',
               { id: 'it340', className: 'cardbtn', onClick: it340sel },
+              'Click Here to Add',
+              React.createElement('br', null),
               'Wednesday 1800 - 2100',
               React.createElement('br', null),
               'BEST 130'
@@ -709,6 +714,8 @@ var renderApp = function renderApp() {
             React.createElement(
               'button',
               { id: 'engl362online', className: 'cardbtn', onClick: engl362sel },
+              'Click Here to Add',
+              React.createElement('br', null),
               'ONLINE',
               React.createElement('br', null),
               'ONLINE'
@@ -754,6 +761,8 @@ var renderApp = function renderApp() {
             React.createElement(
               'button',
               { id: 'math365', className: 'cardbtn', onClick: math365sel },
+              'Click Here to Add',
+              React.createElement('br', null),
               'Tuesday 1910 - 2200',
               React.createElement('br', null),
               'REG 265'
@@ -799,6 +808,8 @@ var renderApp = function renderApp() {
             React.createElement(
               'button',
               { className: 'cardbtn', onClick: it420sel },
+              'Click Here to Add',
+              React.createElement('br', null),
               'Thursday 1910 - 2200',
               React.createElement('br', null),
               'BEST 310'
@@ -1128,7 +1139,7 @@ var renderReviewApp = function renderReviewApp() {
         React.createElement(
           'button',
           { onClick: submit, id: 'review' },
-          'Submit'
+          'Enroll'
         ),
         React.createElement(
           'button',
@@ -1226,7 +1237,7 @@ var renderSubmitApp = function renderSubmitApp() {
           ),
           React.createElement(
             'div',
-            { className: 'weekS-day tuesday' },
+            { className: 'week-day tuesday' },
             'Tuesday'
           ),
           app.tuesdayCourses.map(function (courses) {

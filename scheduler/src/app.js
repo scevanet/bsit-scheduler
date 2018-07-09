@@ -23,7 +23,6 @@ let visability = true;
 
 const toggle420Visibility = () => {
   if (app.courses.length == 0) {
-  // array does not exist, is not an array, or is empty
     visability = !visability;
     renderApp();
   }
@@ -40,7 +39,6 @@ const it310sel = () => {
   else {
     removeIT310();
   }
-
 }
 
 const addIT310 = () => {
@@ -303,7 +301,7 @@ const renderApp = () => {
               <li>Something else about the course</li>
               <li>Third something about the course</li>
             </ul>
-            <button id="it310" className="cardbtn" onClick={it310sel}>Monday 1810 - 2100<br />BEST 230</button>
+            <button id="it310" className="cardbtn" onClick={it310sel}>Click Here to Add<br />Monday 1810 - 2100<br />BEST 230</button>
           </div>
           <div className="card">
             <h4>IT 320 -- Systems and Networking Administration</h4>
@@ -314,7 +312,7 @@ const renderApp = () => {
               <li>Something else about the course</li>
               <li>Third something about the course</li>
             </ul>
-            <button id="it320" className="cardbtn" onClick={it320sel}>Thursday 1910 - 2200<br />BEST 230</button>
+            <button id="it320" className="cardbtn" onClick={it320sel}>Click Here to Add<br />Thursday 1910 - 2200<br />BEST 230</button>
           </div>
           <div className="card">
             <h4>IT 340 -- Computer and Information Security</h4>
@@ -325,7 +323,7 @@ const renderApp = () => {
               <li>Something else about the course</li>
               <li>Third something about the course</li>
             </ul>
-            <button id="it340" className="cardbtn" onClick={it340sel}>Wednesday 1800 - 2100<br />BEST 130</button>
+            <button id="it340" className="cardbtn" onClick={it340sel}>Click Here to Add<br />Wednesday 1800 - 2100<br />BEST 130</button>
           </div>
         </div>
         <div className="column">
@@ -338,7 +336,7 @@ const renderApp = () => {
               <li>Something else about the course</li>
               <li>Third something about the course</li>
             </ul>
-            <button id="engl362online" className="cardbtn" onClick={engl362sel}>ONLINE<br />ONLINE</button>
+            <button id="engl362online" className="cardbtn" onClick={engl362sel}>Click Here to Add<br />ONLINE<br />ONLINE</button>
           </div>
           <div className="card">
             <h4>MATH 365 -- Elementary Statistics</h4>
@@ -349,7 +347,7 @@ const renderApp = () => {
               <li>Something else about the course</li>
               <li>Third something about the course</li>
             </ul>
-            <button id="math365" className="cardbtn" onClick={math365sel}>Tuesday 1910 - 2200<br />REG 265</button>
+            <button id="math365" className="cardbtn" onClick={math365sel}>Click Here to Add<br />Tuesday 1910 - 2200<br />REG 265</button>
           </div>
           {visability && (
           <div className="card">
@@ -361,7 +359,7 @@ const renderApp = () => {
               <li>Something else about the course</li>
               <li>Third something about the course</li>
             </ul>
-            <button className="cardbtn" onClick={it420sel}>Thursday 1910 - 2200<br />BEST 310</button>
+            <button className="cardbtn" onClick={it420sel}>Click Here to Add<br />Thursday 1910 - 2200<br />BEST 310</button>
           </div>
         )}
         </div>
@@ -448,7 +446,7 @@ const renderReviewApp = () => {
         </div>
       </div>
       <div className="review">
-        <button onClick={submit} id="review">Submit</button><button onClick={clearAll}>Go Back</button>
+        <button onClick={submit} id="review">Enroll</button><button onClick={clearAll}>Go Back</button>
       </div>
     </main>
     <footer>
@@ -479,7 +477,7 @@ const renderSubmitApp = () => {
             <div className="hour mhour6">2100</div>
             <div className="hour mhour7">2200</div>
             <div className="hour mhour8">2300</div>
-          <div className="weekS-day tuesday">Tuesday</div>
+          <div className="week-day tuesday">Tuesday</div>
             {app.tuesdayCourses.map((courses) => <div className="sevTuOClockClass" key={courses}>{courses}</div>)}
             <div className="hour tuhour1">1600</div>
             <div className="hour tuhour2">1700</div>
