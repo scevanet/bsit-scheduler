@@ -242,13 +242,21 @@ const clearAll = () => {
   renderApp();
 }
 
+const goBack = () => {
+  app.creditHours = app.creditHours;
+
+  renderApp();
+}
+
 const review = () => {
   renderReviewApp();
 }
 
 const submit = () => {
   renderSubmitApp();
+  alert('You have successfully enrolled.');
 }
+
 const renderApp = () => {
   const template = (
     <div>
@@ -261,50 +269,50 @@ const renderApp = () => {
         <div className="week">
           <div className="week-day monday">Monday</div>
             {app.mondayCourses.map((courses) => <div className="sixMoOClockClass" key={courses}>{courses}</div>)}
-            <div className="hour mhour1">1600</div>
-            <div className="hour mhour2">1700</div>
-            <div className="hour mhour3">1800</div>
-            <div className="hour mhour4">1900</div>
-            <div className="hour mhour5">2000</div>
-            <div className="hour mhour6">2100</div>
-            <div className="hour mhour7">2200</div>
-            <div className="hour mhour8">2300</div>
+            <div className="hour mhour1">4:00p</div>
+            <div className="hour mhour2">5:00p</div>
+            <div className="hour mhour3">6:00p</div>
+            <div className="hour mhour4">7:00p</div>
+            <div className="hour mhour5">8:00p</div>
+            <div className="hour mhour6">9:00p</div>
+            <div className="hour mhour7">10:00p</div>
+            <div className="hour mhour8">11:00p</div>
           <div className="week-day tuesday">Tuesday</div>
             {app.tuesdayCourses.map((courses) => <div className="sevTuOClockClass" key={courses}>{courses}</div>)}
-            <div className="hour tuhour1">1600</div>
-            <div className="hour tuhour2">1700</div>
-            <div className="hour tuhour3">1800</div>
-            <div className="hour tuhour4">1900</div>
-            <div className="hour tuhour5">2000</div>
-            <div className="hour tuhour6">2100</div>
-            <div className="hour tuhour7">2200</div>
-            <div className="hour tuhour8">2300</div>
+            <div className="hour tuhour1">4:00p</div>
+            <div className="hour tuhour2">5:00p</div>
+            <div className="hour tuhour3">6:00p</div>
+            <div className="hour tuhour4">7:00p</div>
+            <div className="hour tuhour5">8:00p</div>
+            <div className="hour tuhour6">9:00p</div>
+            <div className="hour tuhour7">10:00p</div>
+            <div className="hour tuhour8">11:00p</div>
           <div className="week-day wednesday">Wednesday</div>
             {app.wednesdayCourses.map((courses) => <div className="sixWOClockClass" key={courses}>{courses}</div>)}
-            <div className="hour whour1">1600</div>
-            <div className="hour whour2">1700</div>
-            <div className="hour whour3">1800</div>
-            <div className="hour whour4">1900</div>
-            <div className="hour whour5">2000</div>
-            <div className="hour whour6">2100</div>
-            <div className="hour whour7">2200</div>
-            <div className="hour whour8">2300</div>
+            <div className="hour whour1">4:00p</div>
+            <div className="hour whour2">5:00p</div>
+            <div className="hour whour3">6:00p</div>
+            <div className="hour whour4">7:00p</div>
+            <div className="hour whour5">8:00p</div>
+            <div className="hour whour6">9:00p</div>
+            <div className="hour whour7">10:00p</div>
+            <div className="hour whour8">11:00p</div>
           <div className="week-day thursday">Thursday</div>
             {app.thursdayCourses.map((courses) => <div className="sevThOClockClass" key={courses}>{courses}</div>)}
-            <div className="hour thhour1">1600</div>
-            <div className="hour thhour2">1700</div>
-            <div className="hour thhour3">1800</div>
-            <div className="hour thhour4">1900</div>
-            <div className="hour thhour5">2000</div>
-            <div className="hour thhour6">2100</div>
-            <div className="hour thhour7">2200</div>
-            <div className="hour thhour8">2300</div>
+            <div className="hour thhour1">4:00p</div>
+            <div className="hour thhour2">5:00p</div>
+            <div className="hour thhour3">6:00p</div>
+            <div className="hour thhour4">7:00p</div>
+            <div className="hour thhour5">8:00p</div>
+            <div className="hour thhour6">9:00p</div>
+            <div className="hour thhour7">10:00p</div>
+            <div className="hour thhour8">11:00p</div>
         </div>
+        <p id="online">ONLINE: {app.online}</p>
       </div>
       <div className="summary">
         <div className="coursesumm">
-          <h2>Review</h2>
-          <p>ONLINE: {app.online}</p>
+          <h2>Summary</h2>
           <p>Credit Hours: {app.creditHours}</p>
           <p>Courses:</p>
           <ul>
@@ -322,7 +330,7 @@ const renderApp = () => {
         <div className="column">
           <div className="card">
             <h4>IT 310 -- Computer Organization Platforms & Technologies</h4>
-            <p>8/20/2018 - 12/14/2018</p>
+            <p>8/20/2018 - 12/14/2018 || Monday 6:00p - 9:00p || BEST 230</p>
             <a href="https://it.eecs.ku.edu/it310" target = "_blank"
             title="IT 310">Course Description</a>
             <ul>
@@ -334,11 +342,11 @@ const renderApp = () => {
               virtual machine emulation, platform technologies.</li>
               <li>Prerequisite: Upper-level IT eligibility.</li>
             </ul>
-            <button id="it310" className="cardbtn" onClick={it310sel}>Click Here to {app.it310btnText}<br />Monday 1810 - 2100<br />BEST 230</button>
+            <button id="it310" onClick={it310sel}>{app.it310btnText}</button>
           </div>
           <div className="card">
             <h4>IT 320 -- Systems and Networking Administration</h4>
-            <p>8/20/2018 - 12/14/2018</p>
+            <p>8/20/2018 - 12/14/2018 || Thursday 7:10p - 10:00p || BEST 230</p>
             <a href="https://it.eecs.ku.edu/it320" target = "_blank"
             title="IT 320">Course Description</a>
             <ul>
@@ -360,11 +368,11 @@ const renderApp = () => {
               <li>Prerequisite: Upper-level IT eligibility. Corequisite: IT 310.
               </li>
             </ul>
-            <button id="it320" className="cardbtn" onClick={it320sel}>Click Here to {app.it320btnText}<br />Thursday 1910 - 2200<br />BEST 230</button>
+            <button id="it320"  onClick={it320sel}>{app.it320btnText}</button>
           </div>
           <div className="card">
             <h4>IT 340 -- Computer and Information Security</h4>
-            <p>8/20/2018 - 12/14/2018</p>
+            <p>8/20/2018 - 12/14/2018 || Wednesday 6:00p - 9:00p || BEST 130</p>
             <a href="https://it.eecs.ku.edu/it340" target = "_blank"
             title="IT 340">Course Description</a>
             <ul>
@@ -377,24 +385,24 @@ const renderApp = () => {
                 response.</li>
               <li>Upper-level IT eligibility</li>
             </ul>
-            <button id="it340" className="cardbtn" onClick={it340sel}>Click Here to {app.it340btnText}<br />Wednesday 1800 - 2100<br />BEST 130</button>
+            <button id="it340"  onClick={it340sel}>{app.it340btnText}</button>
           </div>
         </div>
         <div className="column">
           <div className="card">
             <h4>ENGL 362 -- Foundations of Technical Writing</h4>
-            <p>8/20/2018 - 12/14/2018</p>
+            <p>8/20/2018 - 12/14/2018 || ONLINE </p>
             <a href="#">Course Description</a>
             <ul>
               <li>Something about the course</li>
               <li>Something else about the course</li>
               <li>Third something about the course</li>
             </ul>
-            <button id="engl362online" className="cardbtn" onClick={engl362sel}>Click Here to {app.engl362btnText}<br />ONLINE<br />ONLINE</button>
+            <button id="engl362online"  onClick={engl362sel}>{app.engl362btnText}</button>
           </div>
           <div className="card">
             <h4>MATH 365 -- Elementary Statistics</h4>
-            <p>8/20/2018 - 12/14/2018</p>
+            <p>8/20/2018 - 12/14/2018 || Tuesday 7:10p - 10:00p || REG 265</p>
             <a href="#">Course Description</a>
             <ul>
               <li>Introduces students to the principles of technical
@@ -407,12 +415,12 @@ const renderApp = () => {
                   English 564. Prerequisite: Prior completion of the KU Core
                   Written Communication requirement.</li>
             </ul>
-            <button id="math365" className="cardbtn" onClick={math365sel}>Click Here to {app.math365btnText}<br />Tuesday 1910 - 2200<br />REG 265</button>
+            <button id="math365"  onClick={math365sel}>{app.math365btnText}</button>
           </div>
           {visability && (
           <div className="card">
             <h4>IT 420 -- Operating Systems</h4>
-            <p>8/20/2018 - 12/14/2018</p>
+            <p>8/20/2018 - 12/14/2018 || Thursday 7:10p - 10:00p || BEST 310</p>
             <a href="https://it.eecs.ku.edu/it420" target = "_blank"
             title="IT 420">Course Description</a>
             <ul>
@@ -425,7 +433,7 @@ const renderApp = () => {
                 and an introduction to virtualization.</li>
                 <li>Prerequisite: MATH 365, IT 320, and IT 342</li>
             </ul>
-            <button className="cardbtn" onClick={it420sel}>Click Here to Add<br />Thursday 1910 - 2200<br />BEST 310</button>
+            <button  onClick={it420sel}>Add</button>
           </div>
         )}
         </div>
@@ -465,50 +473,50 @@ const renderReviewApp = () => {
         <div className="week">
           <div className="week-day monday">Monday</div>
             {app.mondayCourses.map((courses) => <div className="sixMoOClockClass" key={courses}>{courses}</div>)}
-            <div className="hour mhour1">1600</div>
-            <div className="hour mhour2">1700</div>
-            <div className="hour mhour3">1800</div>
-            <div className="hour mhour4">1900</div>
-            <div className="hour mhour5">2000</div>
-            <div className="hour mhour6">2100</div>
-            <div className="hour mhour7">2200</div>
-            <div className="hour mhour8">2300</div>
+            <div className="hour mhour1">4:00p</div>
+            <div className="hour mhour2">5:00p</div>
+            <div className="hour mhour3">6:00p</div>
+            <div className="hour mhour4">7:00p</div>
+            <div className="hour mhour5">8:00p</div>
+            <div className="hour mhour6">9:00p</div>
+            <div className="hour mhour7">10:00p</div>
+            <div className="hour mhour8">11:00p</div>
           <div className="week-day tuesday">Tuesday</div>
             {app.tuesdayCourses.map((courses) => <div className="sevTuOClockClass" key={courses}>{courses}</div>)}
-            <div className="hour tuhour1">1600</div>
-            <div className="hour tuhour2">1700</div>
-            <div className="hour tuhour3">1800</div>
-            <div className="hour tuhour4">1900</div>
-            <div className="hour tuhour5">2000</div>
-            <div className="hour tuhour6">2100</div>
-            <div className="hour tuhour7">2200</div>
-            <div className="hour tuhour8">2300</div>
+            <div className="hour tuhour1">4:00p</div>
+            <div className="hour tuhour2">5:00p</div>
+            <div className="hour tuhour3">6:00p</div>
+            <div className="hour tuhour4">7:00p</div>
+            <div className="hour tuhour5">8:00p</div>
+            <div className="hour tuhour6">9:00p</div>
+            <div className="hour tuhour7">10:00p</div>
+            <div className="hour tuhour8">11:00p</div>
           <div className="week-day wednesday">Wednesday</div>
             {app.wednesdayCourses.map((courses) => <div className="sixWOClockClass" key={courses}>{courses}</div>)}
-            <div className="hour whour1">1600</div>
-            <div className="hour whour2">1700</div>
-            <div className="hour whour3">1800</div>
-            <div className="hour whour4">1900</div>
-            <div className="hour whour5">2000</div>
-            <div className="hour whour6">2100</div>
-            <div className="hour whour7">2200</div>
-            <div className="hour whour8">2300</div>
+            <div className="hour whour1">4:00p</div>
+            <div className="hour whour2">5:00p</div>
+            <div className="hour whour3">6:00p</div>
+            <div className="hour whour4">7:00p</div>
+            <div className="hour whour5">8:00p</div>
+            <div className="hour whour6">9:00p</div>
+            <div className="hour whour7">10:00p</div>
+            <div className="hour whour8">11:00p</div>
           <div className="week-day thursday">Thursday</div>
             {app.thursdayCourses.map((courses) => <div className="sevThOClockClass" key={courses}>{courses}</div>)}
-            <div className="hour thhour1">1600</div>
-            <div className="hour thhour2">1700</div>
-            <div className="hour thhour3">1800</div>
-            <div className="hour thhour4">1900</div>
-            <div className="hour thhour5">2000</div>
-            <div className="hour thhour6">2100</div>
-            <div className="hour thhour7">2200</div>
-            <div className="hour thhour8">2300</div>
+            <div className="hour thhour1">4:00p</div>
+            <div className="hour thhour2">5:00p</div>
+            <div className="hour thhour3">6:00p</div>
+            <div className="hour thhour4">7:00p</div>
+            <div className="hour thhour5">8:00p</div>
+            <div className="hour thhour6">9:00p</div>
+            <div className="hour thhour7">10:00p</div>
+            <div className="hour thhour8">11:00p</div>
         </div>
+        <p id="online">ONLINE: {app.online}</p>
       </div>
       <div className="summary">
         <div className="coursesumm">
-          <h2>Review</h2>
-          <p>ONLINE: {app.online}</p>
+          <h2>Summary</h2>
           <p>Credit Hours: {app.creditHours}</p>
           <p>Courses:</p>
           <ul>
@@ -546,44 +554,61 @@ const renderSubmitApp = () => {
         <div className="week">
           <div className="week-day monday">Monday</div>
             {app.mondayCourses.map((courses) => <div className="sixMoOClockClass" key={courses}>{courses}</div>)}
-            <div className="hour mhour1">1600</div>
-            <div className="hour mhour2">1700</div>
-            <div className="hour mhour3">1800</div>
-            <div className="hour mhour4">1900</div>
-            <div className="hour mhour5">2000</div>
-            <div className="hour mhour6">2100</div>
-            <div className="hour mhour7">2200</div>
-            <div className="hour mhour8">2300</div>
+            <div className="hour mhour1">4:00p</div>
+            <div className="hour mhour2">5:00p</div>
+            <div className="hour mhour3">6:00p</div>
+            <div className="hour mhour4">7:00p</div>
+            <div className="hour mhour5">8:00p</div>
+            <div className="hour mhour6">9:00p</div>
+            <div className="hour mhour7">10:00p</div>
+            <div className="hour mhour8">11:00p</div>
           <div className="week-day tuesday">Tuesday</div>
             {app.tuesdayCourses.map((courses) => <div className="sevTuOClockClass" key={courses}>{courses}</div>)}
-            <div className="hour tuhour1">1600</div>
-            <div className="hour tuhour2">1700</div>
-            <div className="hour tuhour3">1800</div>
-            <div className="hour tuhour4">1900</div>
-            <div className="hour tuhour5">2000</div>
-            <div className="hour tuhour6">2100</div>
-            <div className="hour tuhour7">2200</div>
-            <div className="hour tuhour8">2300</div>
+            <div className="hour tuhour1">4:00p</div>
+            <div className="hour tuhour2">5:00p</div>
+            <div className="hour tuhour3">6:00p</div>
+            <div className="hour tuhour4">7:00p</div>
+            <div className="hour tuhour5">8:00p</div>
+            <div className="hour tuhour6">9:00p</div>
+            <div className="hour tuhour7">10:00p</div>
+            <div className="hour tuhour8">11:00p</div>
           <div className="week-day wednesday">Wednesday</div>
             {app.wednesdayCourses.map((courses) => <div className="sixWOClockClass" key={courses}>{courses}</div>)}
-            <div className="hour whour1">1600</div>
-            <div className="hour whour2">1700</div>
-            <div className="hour whour3">1800</div>
-            <div className="hour whour4">1900</div>
-            <div className="hour whour5">2000</div>
-            <div className="hour whour6">2100</div>
-            <div className="hour whour7">2200</div>
-            <div className="hour whour8">2300</div>
+            <div className="hour whour1">4:00p</div>
+            <div className="hour whour2">5:00p</div>
+            <div className="hour whour3">6:00p</div>
+            <div className="hour whour4">7:00p</div>
+            <div className="hour whour5">8:00p</div>
+            <div className="hour whour6">9:00p</div>
+            <div className="hour whour7">10:00p</div>
+            <div className="hour whour8">11:00p</div>
           <div className="week-day thursday">Thursday</div>
             {app.thursdayCourses.map((courses) => <div className="sevThOClockClass" key={courses}>{courses}</div>)}
-            <div className="hour thhour1">1600</div>
-            <div className="hour thhour2">1700</div>
-            <div className="hour thhour3">1800</div>
-            <div className="hour thhour4">1900</div>
-            <div className="hour thhour5">2000</div>
-            <div className="hour thhour6">2100</div>
-            <div className="hour thhour7">2200</div>
-            <div className="hour thhour8">2300</div>
+            <div className="hour thhour1">4:00p</div>
+            <div className="hour thhour2">5:00p</div>
+            <div className="hour thhour3">6:00p</div>
+            <div className="hour thhour4">7:00p</div>
+            <div className="hour thhour5">8:00p</div>
+            <div className="hour thhour6">9:00p</div>
+            <div className="hour thhour7">10:00p</div>
+            <div className="hour thhour8">11:00p</div>
+        </div>
+        <p id="online">ONLINE: {app.online}</p>
+      </div>
+      <div className="summary">
+        <div className="coursesumm">
+          <h2>Summary</h2>
+          <p>Credit Hours: {app.creditHours}</p>
+          <p>Courses:</p>
+          <ul>
+          {
+            app.courses.map((item) => <li key={item}>{item}</li>)
+          }
+          </ul>
+        </div>
+        <div className="tutitionsumm">
+          <h2>Tuition</h2>
+          <p>Course Cost: ${app.tuition.toFixed(2)}</p>
         </div>
       </div>
     </main>

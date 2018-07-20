@@ -255,13 +255,21 @@ var clearAll = function clearAll() {
   renderApp();
 };
 
+var goBack = function goBack() {
+  app.creditHours = app.creditHours;
+
+  renderApp();
+};
+
 var review = function review() {
   renderReviewApp();
 };
 
 var submit = function submit() {
   renderSubmitApp();
+  alert('You have successfully enrolled.');
 };
+
 var renderApp = function renderApp() {
   var template = React.createElement(
     'div',
@@ -300,42 +308,42 @@ var renderApp = function renderApp() {
           React.createElement(
             'div',
             { className: 'hour mhour1' },
-            '1600'
+            '4:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour2' },
-            '1700'
+            '5:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour3' },
-            '1800'
+            '6:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour4' },
-            '1900'
+            '7:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour5' },
-            '2000'
+            '8:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour6' },
-            '2100'
+            '9:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour7' },
-            '2200'
+            '10:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour8' },
-            '2300'
+            '11:00p'
           ),
           React.createElement(
             'div',
@@ -352,42 +360,42 @@ var renderApp = function renderApp() {
           React.createElement(
             'div',
             { className: 'hour tuhour1' },
-            '1600'
+            '4:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour2' },
-            '1700'
+            '5:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour3' },
-            '1800'
+            '6:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour4' },
-            '1900'
+            '7:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour5' },
-            '2000'
+            '8:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour6' },
-            '2100'
+            '9:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour7' },
-            '2200'
+            '10:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour8' },
-            '2300'
+            '11:00p'
           ),
           React.createElement(
             'div',
@@ -404,42 +412,42 @@ var renderApp = function renderApp() {
           React.createElement(
             'div',
             { className: 'hour whour1' },
-            '1600'
+            '4:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour2' },
-            '1700'
+            '5:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour3' },
-            '1800'
+            '6:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour4' },
-            '1900'
+            '7:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour5' },
-            '2000'
+            '8:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour6' },
-            '2100'
+            '9:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour7' },
-            '2200'
+            '10:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour8' },
-            '2300'
+            '11:00p'
           ),
           React.createElement(
             'div',
@@ -456,43 +464,49 @@ var renderApp = function renderApp() {
           React.createElement(
             'div',
             { className: 'hour thhour1' },
-            '1600'
+            '4:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour2' },
-            '1700'
+            '5:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour3' },
-            '1800'
+            '6:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour4' },
-            '1900'
+            '7:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour5' },
-            '2000'
+            '8:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour6' },
-            '2100'
+            '9:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour7' },
-            '2200'
+            '10:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour8' },
-            '2300'
+            '11:00p'
           )
+        ),
+        React.createElement(
+          'p',
+          { id: 'online' },
+          'ONLINE: ',
+          app.online
         )
       ),
       React.createElement(
@@ -504,13 +518,7 @@ var renderApp = function renderApp() {
           React.createElement(
             'h2',
             null,
-            'Review'
-          ),
-          React.createElement(
-            'p',
-            null,
-            'ONLINE: ',
-            app.online
+            'Summary'
           ),
           React.createElement(
             'p',
@@ -568,7 +576,7 @@ var renderApp = function renderApp() {
             React.createElement(
               'p',
               null,
-              '8/20/2018 - 12/14/2018'
+              '8/20/2018 - 12/14/2018 || Monday 6:00p - 9:00p || BEST 230'
             ),
             React.createElement(
               'a',
@@ -592,13 +600,8 @@ var renderApp = function renderApp() {
             ),
             React.createElement(
               'button',
-              { id: 'it310', className: 'cardbtn', onClick: it310sel },
-              'Click Here to ',
-              app.it310btnText,
-              React.createElement('br', null),
-              'Monday 1810 - 2100',
-              React.createElement('br', null),
-              'BEST 230'
+              { id: 'it310', onClick: it310sel },
+              app.it310btnText
             )
           ),
           React.createElement(
@@ -612,7 +615,7 @@ var renderApp = function renderApp() {
             React.createElement(
               'p',
               null,
-              '8/20/2018 - 12/14/2018'
+              '8/20/2018 - 12/14/2018 || Thursday 7:10p - 10:00p || BEST 230'
             ),
             React.createElement(
               'a',
@@ -636,13 +639,8 @@ var renderApp = function renderApp() {
             ),
             React.createElement(
               'button',
-              { id: 'it320', className: 'cardbtn', onClick: it320sel },
-              'Click Here to ',
-              app.it320btnText,
-              React.createElement('br', null),
-              'Thursday 1910 - 2200',
-              React.createElement('br', null),
-              'BEST 230'
+              { id: 'it320', onClick: it320sel },
+              app.it320btnText
             )
           ),
           React.createElement(
@@ -656,7 +654,7 @@ var renderApp = function renderApp() {
             React.createElement(
               'p',
               null,
-              '8/20/2018 - 12/14/2018'
+              '8/20/2018 - 12/14/2018 || Wednesday 6:00p - 9:00p || BEST 130'
             ),
             React.createElement(
               'a',
@@ -680,13 +678,8 @@ var renderApp = function renderApp() {
             ),
             React.createElement(
               'button',
-              { id: 'it340', className: 'cardbtn', onClick: it340sel },
-              'Click Here to ',
-              app.it340btnText,
-              React.createElement('br', null),
-              'Wednesday 1800 - 2100',
-              React.createElement('br', null),
-              'BEST 130'
+              { id: 'it340', onClick: it340sel },
+              app.it340btnText
             )
           )
         ),
@@ -704,7 +697,7 @@ var renderApp = function renderApp() {
             React.createElement(
               'p',
               null,
-              '8/20/2018 - 12/14/2018'
+              '8/20/2018 - 12/14/2018 || ONLINE '
             ),
             React.createElement(
               'a',
@@ -732,13 +725,8 @@ var renderApp = function renderApp() {
             ),
             React.createElement(
               'button',
-              { id: 'engl362online', className: 'cardbtn', onClick: engl362sel },
-              'Click Here to ',
-              app.engl362btnText,
-              React.createElement('br', null),
-              'ONLINE',
-              React.createElement('br', null),
-              'ONLINE'
+              { id: 'engl362online', onClick: engl362sel },
+              app.engl362btnText
             )
           ),
           React.createElement(
@@ -752,7 +740,7 @@ var renderApp = function renderApp() {
             React.createElement(
               'p',
               null,
-              '8/20/2018 - 12/14/2018'
+              '8/20/2018 - 12/14/2018 || Tuesday 7:10p - 10:00p || REG 265'
             ),
             React.createElement(
               'a',
@@ -770,13 +758,8 @@ var renderApp = function renderApp() {
             ),
             React.createElement(
               'button',
-              { id: 'math365', className: 'cardbtn', onClick: math365sel },
-              'Click Here to ',
-              app.math365btnText,
-              React.createElement('br', null),
-              'Tuesday 1910 - 2200',
-              React.createElement('br', null),
-              'REG 265'
+              { id: 'math365', onClick: math365sel },
+              app.math365btnText
             )
           ),
           visability && React.createElement(
@@ -790,7 +773,7 @@ var renderApp = function renderApp() {
             React.createElement(
               'p',
               null,
-              '8/20/2018 - 12/14/2018'
+              '8/20/2018 - 12/14/2018 || Thursday 7:10p - 10:00p || BEST 310'
             ),
             React.createElement(
               'a',
@@ -814,12 +797,8 @@ var renderApp = function renderApp() {
             ),
             React.createElement(
               'button',
-              { className: 'cardbtn', onClick: it420sel },
-              'Click Here to Add',
-              React.createElement('br', null),
-              'Thursday 1910 - 2200',
-              React.createElement('br', null),
-              'BEST 310'
+              { onClick: it420sel },
+              'Add'
             )
           )
         )
@@ -922,42 +901,42 @@ var renderReviewApp = function renderReviewApp() {
           React.createElement(
             'div',
             { className: 'hour mhour1' },
-            '1600'
+            '4:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour2' },
-            '1700'
+            '5:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour3' },
-            '1800'
+            '6:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour4' },
-            '1900'
+            '7:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour5' },
-            '2000'
+            '8:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour6' },
-            '2100'
+            '9:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour7' },
-            '2200'
+            '10:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour8' },
-            '2300'
+            '11:00p'
           ),
           React.createElement(
             'div',
@@ -974,42 +953,42 @@ var renderReviewApp = function renderReviewApp() {
           React.createElement(
             'div',
             { className: 'hour tuhour1' },
-            '1600'
+            '4:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour2' },
-            '1700'
+            '5:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour3' },
-            '1800'
+            '6:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour4' },
-            '1900'
+            '7:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour5' },
-            '2000'
+            '8:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour6' },
-            '2100'
+            '9:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour7' },
-            '2200'
+            '10:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour8' },
-            '2300'
+            '11:00p'
           ),
           React.createElement(
             'div',
@@ -1026,42 +1005,42 @@ var renderReviewApp = function renderReviewApp() {
           React.createElement(
             'div',
             { className: 'hour whour1' },
-            '1600'
+            '4:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour2' },
-            '1700'
+            '5:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour3' },
-            '1800'
+            '6:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour4' },
-            '1900'
+            '7:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour5' },
-            '2000'
+            '8:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour6' },
-            '2100'
+            '9:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour7' },
-            '2200'
+            '10:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour8' },
-            '2300'
+            '11:00p'
           ),
           React.createElement(
             'div',
@@ -1078,43 +1057,49 @@ var renderReviewApp = function renderReviewApp() {
           React.createElement(
             'div',
             { className: 'hour thhour1' },
-            '1600'
+            '4:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour2' },
-            '1700'
+            '5:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour3' },
-            '1800'
+            '6:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour4' },
-            '1900'
+            '7:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour5' },
-            '2000'
+            '8:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour6' },
-            '2100'
+            '9:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour7' },
-            '2200'
+            '10:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour8' },
-            '2300'
+            '11:00p'
           )
+        ),
+        React.createElement(
+          'p',
+          { id: 'online' },
+          'ONLINE: ',
+          app.online
         )
       ),
       React.createElement(
@@ -1126,13 +1111,7 @@ var renderReviewApp = function renderReviewApp() {
           React.createElement(
             'h2',
             null,
-            'Review'
-          ),
-          React.createElement(
-            'p',
-            null,
-            'ONLINE: ',
-            app.online
+            'Summary'
           ),
           React.createElement(
             'p',
@@ -1238,42 +1217,42 @@ var renderSubmitApp = function renderSubmitApp() {
           React.createElement(
             'div',
             { className: 'hour mhour1' },
-            '1600'
+            '4:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour2' },
-            '1700'
+            '5:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour3' },
-            '1800'
+            '6:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour4' },
-            '1900'
+            '7:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour5' },
-            '2000'
+            '8:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour6' },
-            '2100'
+            '9:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour7' },
-            '2200'
+            '10:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour mhour8' },
-            '2300'
+            '11:00p'
           ),
           React.createElement(
             'div',
@@ -1290,42 +1269,42 @@ var renderSubmitApp = function renderSubmitApp() {
           React.createElement(
             'div',
             { className: 'hour tuhour1' },
-            '1600'
+            '4:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour2' },
-            '1700'
+            '5:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour3' },
-            '1800'
+            '6:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour4' },
-            '1900'
+            '7:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour5' },
-            '2000'
+            '8:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour6' },
-            '2100'
+            '9:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour7' },
-            '2200'
+            '10:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour tuhour8' },
-            '2300'
+            '11:00p'
           ),
           React.createElement(
             'div',
@@ -1342,42 +1321,42 @@ var renderSubmitApp = function renderSubmitApp() {
           React.createElement(
             'div',
             { className: 'hour whour1' },
-            '1600'
+            '4:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour2' },
-            '1700'
+            '5:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour3' },
-            '1800'
+            '6:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour4' },
-            '1900'
+            '7:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour5' },
-            '2000'
+            '8:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour6' },
-            '2100'
+            '9:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour7' },
-            '2200'
+            '10:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour whour8' },
-            '2300'
+            '11:00p'
           ),
           React.createElement(
             'div',
@@ -1394,42 +1373,98 @@ var renderSubmitApp = function renderSubmitApp() {
           React.createElement(
             'div',
             { className: 'hour thhour1' },
-            '1600'
+            '4:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour2' },
-            '1700'
+            '5:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour3' },
-            '1800'
+            '6:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour4' },
-            '1900'
+            '7:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour5' },
-            '2000'
+            '8:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour6' },
-            '2100'
+            '9:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour7' },
-            '2200'
+            '10:00p'
           ),
           React.createElement(
             'div',
             { className: 'hour thhour8' },
-            '2300'
+            '11:00p'
+          )
+        ),
+        React.createElement(
+          'p',
+          { id: 'online' },
+          'ONLINE: ',
+          app.online
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'summary' },
+        React.createElement(
+          'div',
+          { className: 'coursesumm' },
+          React.createElement(
+            'h2',
+            null,
+            'Summary'
+          ),
+          React.createElement(
+            'p',
+            null,
+            'Credit Hours: ',
+            app.creditHours
+          ),
+          React.createElement(
+            'p',
+            null,
+            'Courses:'
+          ),
+          React.createElement(
+            'ul',
+            null,
+            app.courses.map(function (item) {
+              return React.createElement(
+                'li',
+                { key: item },
+                item
+              );
+            })
+          )
+        ),
+        React.createElement(
+          'div',
+          { className: 'tutitionsumm' },
+          React.createElement(
+            'h2',
+            null,
+            'Tuition'
+          ),
+          React.createElement(
+            'p',
+            null,
+            'Course Cost: $',
+            app.tuition.toFixed(2)
           )
         )
       )
